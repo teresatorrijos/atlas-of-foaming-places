@@ -4,7 +4,7 @@ const placesApiController = require('../controllers/placesApiController');
 
 router.get('/places', placesApiController.index);
 
-router.post('/places', placesApiController.new );
+router.post('/new', placesApiController.new );
 
 router.get('/places/:id', placesApiController.get );
 

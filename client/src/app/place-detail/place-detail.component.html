@@ -1,0 +1,20 @@
+<h1> Place details </h1>
+    <a [routerLink]="['']"> Back to home </a>
+
+<div *ngIf="place">
+  <div class="place-thumbnail">
+    <img height="300" [src]="place.picPath" />
+  </div>
+
+  <div class="place-info">
+    <h3> {{ place.location }} </h3>
+    <p> {{ place.pdescription }}&nbsp;</p>
+
+    <div *ngIf="place.tags.length">
+      <h4> Tags </h4>
+      <ul>
+        <li *ngFor="let tag of place.tags"> {{ tag&nbsp;}} </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -4,8 +4,9 @@ const Schema = mongoose.Schema;
 const placeSchema = new Schema({
   pdescription: String,
   creatorId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  location: { type: { type: String }, coordinates: [Number] },
-  picPath: String
+  location: String, //{ type: { type: String }, coordinates: [Number] },
+  picPath: String,
+  tags: {type: Array, default: []}
 }, {
   timestamps: {
     createdAt: 'created_at',

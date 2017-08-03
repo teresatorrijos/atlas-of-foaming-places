@@ -1,0 +1,29 @@
+
+<h1> Create a new place </h1>
+<a [routerLink]="['']"> Back to home </a>
+
+<form>
+  <fieldset>
+    <legend> Place info </legend>
+    <label> Personal Description </label>
+    <input type="text" [(ngModel)]="newPlace.pdescription" name="pdescription"/>
+
+    <label> Location* </label>
+    <input type="text" [(ngModel)]="newPlace.location" name="location" required />
+
+    <label> Tags </label>
+    <input type="text" #tag />
+    <button (click)="addTag(tag.value); tag.value = ''"> Add </button>
+
+    <ul>
+      <li *ngFor="let tag of newPlace.tags"> {{ tag }} </li>
+    </ul>
+    <small *ngIf="!newPlace.tags.length"> This photo has no tags :( </small>
+
+    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+
+  </fieldset>
+  <button (click)="submit()"> Submit </button>
+</form>
+
+<!-- <p> {{ feedback }} </p> -->
