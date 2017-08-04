@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from "ng2-file-upload";
 import { PlaceService } from '../../services/place.service';
+import { SessionService } from '../../services/session.service';
 import { Observable } from 'rxjs';
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,37 +13,55 @@ import { Router } from '@angular/router';
 })
 export class NewPlaceComponent implements OnInit {
   uploader: FileUploader = new FileUploader({
-    url: `${environment.BASE_URL}/api/places`
+    url: 'http://localhost:3000/api/places/new'
   });
 
   newPlace = {
     pdescription: '',
-    location: '',
+    localizacion: '',
     tags: []
   };
-  // feedback:string;
+  place: any;
+  feedback: any;
+  user:any;
+  error: string;
 
-  constructor(public router: Router) { }
+  constructor( private placeSession: PlaceService,
+               private session: SessionService,
+               public router: Router) { }
 
   ngOnInit() {
-    // this.uploader.onSuccessItem = (item, response) => {
-    //   this.feedback = JSON.parse(response).message;
-    //   this.router.navigate(['/']);
-    // };
-    //
-    // this.uploader.onErrorItem = (item, response, status, headers) => {
-    //   this.feedback = JSON.parse(response).message;
-    // };
+   this.session.getLoginEmitter().subscribe(user => this.user=user);
+   this.uploader.onSuccessItem = (item, response) => {
+      this.feedback = JSON.parse(response).message;
+      console.log(this.feedback);
+    };
+
+    this.uploader.onErrorItem = (item, response, status, headers) => {
+      this.feedback = JSON.parse(response).message;
+      console.log(this.feedback)
+    };
   }
 
-  addSpec(value){
-    this.newPlace.tags.push(value);
+  addTag(value){
+   this.newPlace.tags.push(value);
   }
+
+  // createPlace(){
+  //     console.log(this.newPlace);
+  //     this.placeSession.createPlace(this.newPlace)
+  //     .subscribe(
+  //         (user) => console.log(user),
+  //         (err) => this.error = err
+  //       );
+  //       this.router.navigate(['/']);
+  //       console.log(`${this.newPlace} is created`)
+  //   }
 
   submit(){
     this.uploader.onBuildItemForm = (item, form) => {
       form.append('pdescription', this.newPlace.pdescription);
-      form.append('location', this.newPlace.location);
+      form.append('localizacion', this.newPlace.localizacion);
       form.append('tags', JSON.stringify(this.newPlace.tags));
     };
 

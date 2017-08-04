@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const expressLayouts = require('express-ejs-layouts');
@@ -9,9 +10,7 @@ const passport = require('passport');
 const session = require("express-session");
 const mongoose = require('mongoose');
 const config = require('./config');
-
-require('dotenv').config();
-
+const upload = require('../config/multer');
 
 module.exports = function(app){
 

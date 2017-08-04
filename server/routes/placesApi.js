@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const placesApiController = require('../controllers/placesApiController');
+const upload = require('../config/multer');
 
 
 router.get('/places', placesApiController.index);
 
-router.post('/new', placesApiController.new );
+router.post('/places/new', upload.single('file'), placesApiController.new );
 
 router.get('/places/:id', placesApiController.get );
 

@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SessionService } from '../services/session.service';
 import { PlaceService } from '../services/place.service';
+import { PlaceActivationService } from '../services/placeActivation.service';
+import { ResolvePlaceService } from '../services/placeResolve.service';
 import { AppComponent } from './app.component';
 import { routes } from './routes';
 import { HttpModule } from '@angular/http';
@@ -35,7 +37,7 @@ import { PlacesListComponent } from './places-list/places-list.component';
     HttpModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [SessionService, PlaceService],
+  providers: [SessionService, PlaceService, PlaceActivationService, ResolvePlaceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

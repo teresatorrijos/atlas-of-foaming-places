@@ -1,8 +1,10 @@
+var express = require('express');
 const User = require('../models/User');
 const Place = require('../models/Place');
+const upload = require('../config/multer');
 
 module.exports = {
-  /* GET places listing */
+
   index: (req,res,next) => {
     Place.find({}).then(places =>{
       res.json(places);
@@ -10,25 +12,23 @@ module.exports = {
     .catch( e => res.json(e));
 },
 
-  /* POST new event */
   new: (req, res, next) => {
   const place = new Place ({
     pdescription: req.body.pdescription,
-    // location: req.body.location,
+    localizacion: req.body.localizacion,
     creatorId: req.user._id,
-    picPath: (req.file) ? `/place-uploads/${req.file.filename}` : '/images/default.png'
+    tags: JSON.parse(req.body.tags) || [],
+    pic_path: `/uploads/${req.file.filename}` || '',
   });
   place.save().then(place => {
 			res.status(201).json({
         message: 'New place created!',
-        id: place._id,
-        location: event.location
+        id: place._id
       });
 	})
   .catch( e => res.json(e));
 },
 
-/* GET a single event */
 get: (req,res,next) => {
     Place.findById(req.params.id).then(place =>{
       res.json(place);
@@ -36,7 +36,6 @@ get: (req,res,next) => {
     .catch( e => res.json(e));
 },
 
-/* EDIT a single event */
 edit: (req,res,next) => {
   const updates = {
      pdescription: req.body.pdescription,
@@ -47,7 +46,6 @@ edit: (req,res,next) => {
     .catch( e => res.json(e));
 },
 
-/* DELETE a single event */
 delete: (req,res,next) => {
     Place.remove({ _id: req.params.id }).then( () =>{
       res.json({

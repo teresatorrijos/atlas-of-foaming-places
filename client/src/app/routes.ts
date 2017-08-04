@@ -11,15 +11,15 @@ import { PlaceActivationService } from '../services/placeActivation.service';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: '**', redirectTo: '' },
+  // { path: '**', redirectTo: 'home' },
   { path: 'signup', component: SignupFormComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'home', component: HomeComponent },
   { path: 'new', component: NewPlaceComponent },
   {
     path: 'places', component: PlacesListComponent,
-    canActivate: [PlaceActivationService],
-    resolve: { place: ResolvePlaceService }
+    // canActivate: [PlaceActivationService],
+    // resolve: { place: ResolvePlaceService }
   },
   { path: 'places/:id', component: PlaceDetailComponent },
   { path: 'user/:id', component: UserProfileComponent },

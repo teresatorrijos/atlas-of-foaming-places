@@ -2,14 +2,14 @@
 <h1> Create a new place </h1>
 <a [routerLink]="['']"> Back to home </a>
 
-<form>
+<form class="col s12">
   <fieldset>
     <legend> Place info </legend>
     <label> Personal Description </label>
     <input type="text" [(ngModel)]="newPlace.pdescription" name="pdescription"/>
 
-    <label> Location* </label>
-    <input type="text" [(ngModel)]="newPlace.location" name="location" required />
+    <label> Location </label>
+    <input type="text" [(ngModel)]="newPlace.localizacion" name="localizacion" />
 
     <label> Tags </label>
     <input type="text" #tag />
@@ -23,7 +23,7 @@
     <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
 
   </fieldset>
-  <button (click)="submit()"> Submit </button>
+  <button type="button" (click)="submit()"> Submit </button>
 </form>
 
-<!-- <p> {{ feedback }} </p> -->
+<p> {{ feedback }} </p>
