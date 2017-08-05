@@ -47,16 +47,9 @@ export class NewPlaceComponent implements OnInit {
    this.newPlace.tags.push(value);
   }
 
-  // createPlace(){
-  //     console.log(this.newPlace);
-  //     this.placeSession.createPlace(this.newPlace)
-  //     .subscribe(
-  //         (user) => console.log(user),
-  //         (err) => this.error = err
-  //       );
-  //       this.router.navigate(['/']);
-  //       console.log(`${this.newPlace} is created`)
-  //   }
+  // getGPSInfo() {
+  //   getGPS();
+  // }
 
   submit(){
     this.uploader.onBuildItemForm = (item, form) => {
@@ -66,5 +59,7 @@ export class NewPlaceComponent implements OnInit {
     };
 
    this.uploader.uploadAll();
+  //  this.getGPSInfo();
   }
+
 }

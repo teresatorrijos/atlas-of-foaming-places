@@ -17,7 +17,8 @@ import { HomeComponent } from './home/home.component';
 import { NewPlaceComponent } from './new-place/new-place.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { PlacesListComponent } from './places-list/places-list.component';
+import { AtlasComponent } from './atlas/atlas.component';
+import { CartographyComponent } from './cartography/cartography.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PlacesListComponent } from './places-list/places-list.component';
     FileSelectDirective,
     PlaceDetailComponent,
     UserProfileComponent,
-    PlacesListComponent
+    AtlasComponent,
+    CartographyComponent
   ],
   imports: [
     BrowserModule,

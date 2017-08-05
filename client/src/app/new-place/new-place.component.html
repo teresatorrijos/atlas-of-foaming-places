@@ -20,7 +20,7 @@
     </ul>
     <small *ngIf="!newPlace.tags.length"> This photo has no tags :( </small>
 
-    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+    <input id="file-input" type="file" name="file" ng2FileSelect [uploader]="uploader" />
 
   </fieldset>
   <button type="button" (click)="submit()"> Submit </button>

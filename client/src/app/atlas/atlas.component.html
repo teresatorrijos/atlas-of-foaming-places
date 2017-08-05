@@ -1,0 +1,13 @@
+<h3> Place List </h3>
+
+<div>
+  <button type="button" name="button" [routerLink]="['/new']">Create New Place</button>
+</div>
+
+<div *ngIf="(places)">
+  <div  *ngFor="let place of places" class="blocky">
+    <h3> {{ place.localizacion }} </h3>
+    <p> {{ place.pdescription }} </p>
+    <a [routerLink]="['/places/:id', place._id]"> View Details </a>
+  </div>
+</div>

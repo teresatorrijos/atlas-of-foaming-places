@@ -11,6 +11,7 @@ const session = require("express-session");
 const mongoose = require('mongoose');
 const config = require('./config');
 const upload = require('../config/multer');
+const MongoStore = require("connect-mongo")(session);
 
 module.exports = function(app){
 
@@ -43,6 +44,7 @@ module.exports = function(app){
       secret: 'angular auth passport secret shh ontime',
       resave: true,
       saveUninitialized: true,
+      store: new MongoStore({mongooseConnection: mongoose.connection}),
       cookie : { httpOnly: true, maxAge: 2419200000 }
     }));
 

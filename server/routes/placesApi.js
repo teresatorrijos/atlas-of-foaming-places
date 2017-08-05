@@ -3,7 +3,7 @@ const placesApiController = require('../controllers/placesApiController');
 const upload = require('../config/multer');
 
 
-router.get('/places', placesApiController.index);
+router.get('/atlas', placesApiController.index);
 
 router.post('/places/new', upload.single('file'), placesApiController.new );
 

@@ -20,14 +20,5 @@ const placeSchema = new Schema({
   }
 });
 
-
-// placeSchema.set('toJSON', { virtuals: true });
-// placeSchema.virtual('imgUrl').get(function() {
-//   if(this.pic_path.includes('http')){
-//     return this.pic_path;
-//   }
-//   return `http://localhost:3000${this.pic_path}`;
-// });
-
 const Place = mongoose.model('Place', placeSchema);
 module.exports = Place;
