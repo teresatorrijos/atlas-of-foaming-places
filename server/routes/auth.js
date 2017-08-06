@@ -3,19 +3,26 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const authRoutes = express.Router();
+const upload = require('../config/multer');
 
 
-function returnMessage(message){
-  return (req,res,next) => res.status(500).json({error:true, message:message});
+function returnMessage(message) {
+  return (req, res, next) => res.status(500).json({
+    error: true,
+    message: message
+  });
 }
 
-authRoutes.get('/signup',returnMessage("This should be a POST"));
-authRoutes.post('/signup', (req, res, next) => {
+authRoutes.get('/signup', returnMessage("This should be a POST"));
+authRoutes.post('/signup', upload.single('file'), (req, res, next) => {
   const {
+    name,
     username,
-    password
+    password,
+    email
   } = req.body;
-
+  const pic_path = `/uploads/${req.file.filename}` || '';
+console.log("holi");
   if (!username || !password) {
     res.status(400).json({
       message: 'Provide username and password'
@@ -37,8 +44,11 @@ authRoutes.post('/signup', (req, res, next) => {
     const hashPass = bcrypt.hashSync(password, salt);
 
     const theUser = new User({
+      name,
       username,
-      password: hashPass
+      email,
+      password: hashPass,
+      pic_path
     }).save().then(user => {
       req.login(user, (err) => {
         if (err) {
@@ -56,9 +66,8 @@ authRoutes.post('/signup', (req, res, next) => {
   });
 });
 
-
 /* Login route: Logs the user in having a username and a password. Uses local strategy from passport */
-authRoutes.get('/login',returnMessage("This should be a POST"));
+authRoutes.get('/login', returnMessage("This should be a POST"));
 authRoutes.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
     if (err) {

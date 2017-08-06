@@ -7,8 +7,6 @@ import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AtlasComponent } from './atlas/atlas.component';
 import { CartographyComponent } from './cartography/cartography.component';
-import { ResolvePlaceService } from '../services/placeResolve.service';
-import { PlaceActivationService } from '../services/placeActivation.service';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

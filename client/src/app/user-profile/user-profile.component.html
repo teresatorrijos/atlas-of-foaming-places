@@ -1,3 +1,17 @@
-<p>
-  user-profile works!
-</p>
+<div *ngIf="user">
+  <h3>{{user.username}}</h3>
+  <p>{{user.email}}</p>
+
+  <button type="button" name="button" (click)="remove(user._id)">delete user</button>
+  <button type="button" name="button" (click)="showForm()">EDIT</button>
+  <div *ngIf="show">
+    <h1> Edit User </h1>
+    <form (ngSubmit)="editUser(user._id, myForm)" #myForm="ngForm">
+      <label> email </label>
+      <input type="text" [(ngModel)]="email" name="email"/>
+
+      <button type="submit"> Edit user </button>
+    </form>
+    <p class="error"> {{ error }} </p>
+  </div>
+</div>

@@ -1,20 +1,19 @@
-<h1> Place details </h1>
-    <a [routerLink]="['']"> Back to home </a>
+
 
 <div *ngIf="place">
-  <div class="place-thumbnail">
-    <img height="300" [src]="place.pic_path" />
-  </div>
+  <h3>{{place.localizacion}}</h3>
+  <p>{{place.pdescription}}</p>
+  <p>Creator: {{place.creatorId}}</p>
+  <button type="button" name="button" (click)="remove(place._id)">delete place</button>
+  <button type="button" name="button" (click)="showForm()">EDIT</button>
+  <div *ngIf="show">
+    <h1> Edit Place </h1>
+    <form (ngSubmit)="editPlace(place._id, myForm)" #myForm="ngForm">
+      <label> Personal Description </label>
+      <input type="text" [(ngModel)]="pdescription" name="pdescription"/>
 
-  <div class="place-info">
-    <h3> {{ place.localizacion }} </h3>
-    <p> {{ place.pdescription }}&nbsp;</p>
-
-    <div *ngIf="place.tags.length">
-      <h4> Tags </h4>
-      <ul>
-        <li *ngFor="let tag of place.tags"> {{ tag&nbsp;}} </li>
-      </ul>
-    </div>
+      <button type="submit"> Edit place </button>
+    </form>
+    <p class="error"> {{ error }} </p>
   </div>
 </div>

@@ -4,12 +4,12 @@ import 'rxjs/add/operator/map';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs/Rx';
 
-export interface Place {
+export interface User {
   _id: string
 }
 
 @Injectable()
-export class PlaceService {
+export class UserService {
   BASE_URL: string = environment.BASE_URL;
   options: object = { withCredentials: true };
   params = new URLSearchParams();
@@ -21,25 +21,20 @@ export class PlaceService {
     return Observable.throw(e.json().message);
   }
 
-  indexAtlas() {
-    return this.http.get(`${this.BASE_URL}/api/atlas`, this.options)
-      .map((res) => res.json());
-  }
-
   show(id: string): Observable<object> {
-    return this.http.get(`${this.BASE_URL}/api/places/${id}`, this.options)
+    return this.http.get(`${this.BASE_URL}/api/user/${id}`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
-  update(id: string, place): Observable<object> {
-    return this.http.put(`${this.BASE_URL}/api/places/${id}`, place, this.options)
+  update(id: string, user): Observable<object> {
+    return this.http.put(`${this.BASE_URL}/api/user/${id}`, user, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   remove(id: string): Observable<object> {
-    return this.http.delete(`${this.BASE_URL}/api/places/${id}`, this.options)
+    return this.http.delete(`${this.BASE_URL}/api/user/${id}`, this.options)
       .map(res => res.json())
       .catch(this.handleError);
   }

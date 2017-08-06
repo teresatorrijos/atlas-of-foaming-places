@@ -27,7 +27,7 @@ export class SessionService {
       this.startLoginCompleted = true;
     }, e => this.startLoginCompleted = true);
   }
-  
+
   getLoginEmitter() : EventEmitter<any>{
     return this.loginEvent;
   }

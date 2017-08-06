@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SessionService } from '../services/session.service';
 import { PlaceService } from '../services/place.service';
-import { PlaceActivationService } from '../services/placeActivation.service';
-import { ResolvePlaceService } from '../services/placeResolve.service';
+import { UserService } from '../services/user.service';
 import { AppComponent } from './app.component';
 import { routes } from './routes';
 import { HttpModule } from '@angular/http';
@@ -19,6 +18,7 @@ import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AtlasComponent } from './atlas/atlas.component';
 import { CartographyComponent } from './cartography/cartography.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { CartographyComponent } from './cartography/cartography.component';
     PlaceDetailComponent,
     UserProfileComponent,
     AtlasComponent,
-    CartographyComponent
+    CartographyComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,7 @@ import { CartographyComponent } from './cartography/cartography.component';
     HttpModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [SessionService, PlaceService, PlaceActivationService, ResolvePlaceService],
+  providers: [SessionService, PlaceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
