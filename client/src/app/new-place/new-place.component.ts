@@ -5,6 +5,7 @@ import { SessionService } from '../../services/session.service';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import { EXIF } from "exif-js";
 
 @Component({
   selector: 'app-new-place',
@@ -41,6 +42,18 @@ export class NewPlaceComponent implements OnInit {
       this.feedback = JSON.parse(response).message;
       console.log(this.feedback)
     };
+
+    interface HTMLInputEvent extends Event {
+      target: HTMLInputElement & EventTarget;
+    }
+
+    document.getElementById("file-input").onchange = function(e?: HTMLInputEvent) {
+      EXIF.getData(e.target.files[0], function() {
+        var latitude = EXIF.getTag(this, "GPSLatitude"),
+            longitude = EXIF.getTag(this, "GPSLongitude");
+        alert("I was taken by a " + latitude + " " + longitude);
+      });
+    }
   }
 
   addTag(value){

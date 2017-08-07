@@ -12,12 +12,12 @@ body {
 }
 
 .top-content {
-  background-image: url("assets/images/cultivosrelieve1.jpg");
+  /*background-image: url("assets/images/cultivosrelieve1.jpg");
   background-repeat: no-repeat;
   background-position: right top;
-  background-attachment: fixed;
-  /*background: rgba(0, 0, 0, 0) linear-gradient(135deg, #0c2e2f 0%, #08dfe5 100%) repeat scroll 0 0;*/
-  /*background-color: #0c2e2f;*/
+  background-attachment: fixed;*/
+  background: rgba(0, 0, 0, 0) linear-gradient(135deg, #0c2e2f 0%, #08dfe5 100%) repeat scroll 0 0;
+  background-color: #0c2e2f;
   /*background: rgba(0, 0, 0, 0) linear-gradient(135deg, #01b9ff 0%, #ba78fe 51%, #ea51bd 100%) repeat scroll 0 0;
   background-color: #ba78fe;*/
 }

@@ -30,6 +30,7 @@
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",
     "core-js": "^2.4.1",
+    "exif-js": "^2.2.1",
     "jquery": "^3.2.1",
     "leaflet": "^1.1.0",
     "ng2-bootstrap": "^1.6.3",
