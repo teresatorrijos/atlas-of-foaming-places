@@ -19,7 +19,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AtlasComponent } from './atlas/atlas.component';
 import { CartographyComponent } from './cartography/cartography.component';
 import { NavbarComponent } from './navbar/navbar.component';
-// import { UiLeafletModule } from 'ui-leaflet-ng2';
+import { LeafletModule } from '@asymmetrik/angular2-leaflet';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    // UiLeafletModule
+    LeafletModule
   ],
   providers: [SessionService, PlaceService],
   bootstrap: [AppComponent]
