@@ -7,7 +7,10 @@ const placeSchema = new Schema({
      type: Schema.Types.ObjectId,
      ref: 'User'
    },
-  localizacion: { type: String },
+  localizacion: {
+     type: Array,
+     default: []
+   },
   pic_path: { type: String},
   tags: {
      type: Array,
@@ -18,6 +21,14 @@ const placeSchema = new Schema({
     createdAt: 'created_at',
     updatedAt: 'updated_at'
   }
+});
+
+placeSchema.set('toJSON', { virtuals: true });
+placeSchema.virtual('imageURL').get(function() {
+  if(this.pic_path.includes('http')){
+    return this.pic_path;
+  }
+  return `http://localhost:3000${this.pic_path}`;
 });
 
 const Place = mongoose.model('Place', placeSchema);

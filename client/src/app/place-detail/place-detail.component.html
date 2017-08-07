@@ -1,6 +1,8 @@
 
 
 <div *ngIf="place">
+  <!-- <img height="300" [src]="place.imageURL" /> -->
+   <img src="http://localhost:3000/uploads/hola.jpg" alt="">
   <h3>{{place.localizacion}}</h3>
   <p>{{place.pdescription}}</p>
   <p>Creator: {{place.creatorId}}</p>
@@ -11,7 +13,6 @@
     <form (ngSubmit)="editPlace(place._id, myForm)" #myForm="ngForm">
       <label> Personal Description </label>
       <input type="text" [(ngModel)]="pdescription" name="pdescription"/>
-
       <button type="submit"> Edit place </button>
     </form>
     <p class="error"> {{ error }} </p>

@@ -41,7 +41,7 @@ module.exports = function(app){
     app.use(layouts);
 
     app.use(session({
-      secret: 'angular auth passport secret shh ontime',
+      secret: 'angular auth passport secret',
       resave: true,
       saveUninitialized: true,
       store: new MongoStore({mongooseConnection: mongoose.connection}),

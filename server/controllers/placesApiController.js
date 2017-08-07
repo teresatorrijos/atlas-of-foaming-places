@@ -14,12 +14,13 @@ module.exports = {
 
   new: (req, res, next) => {
     const place = new Place({
-      pdescription: req.body.pdescription,
-      localizacion: req.body.localizacion,
+      pdescription: req.body.pdescription || '',
+      localizacion: req.body.localizacion || [],
       creatorId: req.user._id,
       tags: JSON.parse(req.body.tags) || [],
       pic_path: `/uploads/${req.file.filename}` || '',
     });
+    console.log(place);
     place.save().then(place => {
         res.status(201).json({
           message: 'New place created!',

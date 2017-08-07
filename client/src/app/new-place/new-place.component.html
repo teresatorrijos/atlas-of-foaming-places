@@ -3,13 +3,11 @@
 <a [routerLink]="['']"> Back to home </a>
 
 <form class="col s12">
-  <fieldset>
-    <legend> Place info </legend>
+
+    <input id="file-input" type="file" name="file" ng2FileSelect [uploader]="uploader" />
+
     <label> Personal Description </label>
     <input type="text" [(ngModel)]="newPlace.pdescription" name="pdescription"/>
-
-    <label> Location </label>
-    <input type="text" [(ngModel)]="newPlace.localizacion" name="localizacion" />
 
     <label> Tags </label>
     <input type="text" #tag />
@@ -20,9 +18,8 @@
     </ul>
     <small *ngIf="!newPlace.tags.length"> This photo has no tags :( </small>
 
-    <input id="file-input" type="file" name="file" ng2FileSelect [uploader]="uploader" />
 
-  </fieldset>
+
   <button type="button" (click)="submit()"> Submit </button>
 </form>
 

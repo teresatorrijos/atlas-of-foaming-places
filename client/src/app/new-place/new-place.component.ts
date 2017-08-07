@@ -19,21 +19,23 @@ export class NewPlaceComponent implements OnInit {
 
   newPlace = {
     pdescription: '',
-    localizacion: '',
     tags: []
   };
   place: any;
   feedback: any;
-  user:any;
+  user: any;
   error: string;
+  latitude: number;
+  longitude: number;
+  localizacion: Array<number>;
 
-  constructor( private placeSession: PlaceService,
-               private session: SessionService,
-               public router: Router) { }
+  constructor(private placeSession: PlaceService,
+    private session: SessionService,
+    public router: Router) { }
 
   ngOnInit() {
-   this.session.getLoginEmitter().subscribe(user => this.user=user);
-   this.uploader.onSuccessItem = (item, response) => {
+    this.session.getLoginEmitter().subscribe(user => this.user = user);
+    this.uploader.onSuccessItem = (item, response) => {
       this.feedback = JSON.parse(response).message;
       console.log(this.feedback);
     };
@@ -43,36 +45,45 @@ export class NewPlaceComponent implements OnInit {
       console.log(this.feedback)
     };
 
+    function ConvertDMSToDD(degrees, minutes, seconds, direction) {
+      var dd = degrees + minutes / 60 + seconds / (60 * 60);
+      if (direction == "S" || direction == "W") {
+        dd = dd * -1;
+      }
+      return dd;
+    }
+
     interface HTMLInputEvent extends Event {
       target: HTMLInputElement & EventTarget;
     }
 
     document.getElementById("file-input").onchange = function(e?: HTMLInputEvent) {
       EXIF.getData(e.target.files[0], function() {
-        var latitude = EXIF.getTag(this, "GPSLatitude"),
-            longitude = EXIF.getTag(this, "GPSLongitude");
-        alert("I was taken by a " + latitude + " " + longitude);
+        let lat = EXIF.getTag(this, "GPSLatitude"),
+          latRef = EXIF.getTag(this, "GPSLatitudeRef"),
+          long = EXIF.getTag(this, "GPSLongitude"),
+          longRef = EXIF.getTag(this, "GPSLongitudeRef");
+        this.latitude = ConvertDMSToDD(lat[0], lat[1], lat[2], latRef);
+        this.longitude = ConvertDMSToDD(long[0], long[1], long[2], longRef);
+        console.log(this.latitude + ", " + this.longitude);
       });
     }
   }
 
-  addTag(value){
-   this.newPlace.tags.push(value);
+  addTag(value) {
+    this.newPlace.tags.push(value);
   }
 
-  // getGPSInfo() {
-  //   getGPS();
-  // }
-
-  submit(){
+  submit() {
+    this.localizacion = [this.latitude, this.longitude];
+    console.log(this.localizacion);
     this.uploader.onBuildItemForm = (item, form) => {
       form.append('pdescription', this.newPlace.pdescription);
-      form.append('localizacion', this.newPlace.localizacion);
+      form.append('localizacion', this.localizacion);
       form.append('tags', JSON.stringify(this.newPlace.tags));
     };
 
-   this.uploader.uploadAll();
-  //  this.getGPSInfo();
+    this.uploader.uploadAll();
   }
 
 }
