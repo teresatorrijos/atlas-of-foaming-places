@@ -18,8 +18,10 @@ import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AtlasComponent } from './atlas/atlas.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LeafletDemoModule } from './leaflet/leaflet-demo.module';
+// import { LeafletMapsModule } from './leaflet/leaflet.module';
 import { LeafletModule } from '@asymmetrik/angular2-leaflet';
+import { LeafletBaseLayersComponent } from './cartography/baselayers.component';
+import { LeafletLayersComponent } from './cartography/layers.component';
 
 @NgModule({
   declarations: [
@@ -32,15 +34,17 @@ import { LeafletModule } from '@asymmetrik/angular2-leaflet';
     PlaceDetailComponent,
     UserProfileComponent,
     AtlasComponent,
-    NavbarComponent
+    NavbarComponent,
+    LeafletBaseLayersComponent,
+    LeafletLayersComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    LeafletDemoModule,
-    LeafletModule
+    LeafletModule,
+    // LeafletMapsModule
   ],
   providers: [SessionService, PlaceService],
   bootstrap: [AppComponent]

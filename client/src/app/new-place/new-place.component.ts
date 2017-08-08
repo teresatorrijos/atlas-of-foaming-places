@@ -13,21 +13,24 @@ import { EXIF } from "exif-js";
   styleUrls: ['./new-place.component.css']
 })
 export class NewPlaceComponent implements OnInit {
+  BASE_URL: string = environment.BASE_URL;
+  
   uploader: FileUploader = new FileUploader({
-    url: 'http://localhost:3000/api/places/new'
+    url: `${this.BASE_URL}/api/places/new`
   });
 
   newPlace = {
     pdescription: '',
     tags: []
   };
+  place: any;
   feedback: any;
   user: any;
   error: string;
   localizacion: Array<number>;
   file: any;
 
-  constructor(private placeSession: PlaceService,
+  constructor(private placeService: PlaceService,
     private session: SessionService,
     public router: Router) { }
 
@@ -44,14 +47,6 @@ export class NewPlaceComponent implements OnInit {
     };
   }
 
-  ConvertDMSToDD(degrees, minutes, seconds, direction) {
-    var dd = degrees + minutes / 60 + seconds / (60 * 60);
-    if (direction == "S" || direction == "W") {
-      dd = dd * -1;
-    }
-    return dd;
-  }
-
   fileChangeEvent(e: any) {
     this.file = e.target.files[0]
   }
@@ -66,8 +61,9 @@ export class NewPlaceComponent implements OnInit {
       const latRef = EXIF.getTag(this.file, "GPSLatitudeRef");
       const lng = EXIF.getTag(this.file, "GPSLongitude");
       const lngRef = EXIF.getTag(this.file, "GPSLongitudeRef");
-      const latitude = this.ConvertDMSToDD(lat[0].numerator, lat[1].numerator, lat[2].numerator, latRef);
-      const longitude = this.ConvertDMSToDD(lng[0].numerator, lng[1].numerator, lng[2].numerator, lngRef);
+      console.log(lat[2].numerator)
+      const latitude = this.placeService.convertGms2Dec(lat[0].numerator, lat[1].numerator, (lat[2].numerator)/100, latRef);
+      const longitude = this.placeService.convertGms2Dec(lng[0].numerator, lng[1].numerator, (lng[2].numerator)/100, lngRef);
 
       this.localizacion = [latitude, longitude];
 

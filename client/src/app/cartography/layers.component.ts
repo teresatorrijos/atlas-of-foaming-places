@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 
 import * as L from 'leaflet';
 
-import { LeafletLayersDemoModel } from './layers-demo.model';
+import { LeafletLayersModel } from './layers.model';
 
 @Component({
-	selector: 'leafletLayersDemo',
-	templateUrl: './layers-demo.component.html'
+	selector: 'leafletLayers',
+	templateUrl: './layers.component.html'
 })
-export class LeafletLayersDemoComponent {
+export class LeafletLayersComponent {
 
 	// Open Street Map and Open Cycle Map definitions
 	LAYER_OCM = {
@@ -56,8 +56,8 @@ export class LeafletLayersDemoComponent {
 			icon: L.icon({
 				iconSize: [ 25, 41 ],
 				iconAnchor: [ 13, 41 ],
-				iconUrl: '2273e3d8ad9264b7daa5bdbf8e6b47f8.png',
-				shadowUrl: '44a526eed258222515aa21eaffd14a96.png'
+				iconUrl: 'assets/marker_hole.png',
+				// shadowUrl: '44a526eed258222515aa21eaffd14a96.png'
 			})
 		})
 	};
@@ -79,7 +79,7 @@ export class LeafletLayersDemoComponent {
 	};
 
 	// Form model object
-	model = new LeafletLayersDemoModel(
+	model = new LeafletLayersModel(
 		[ this.LAYER_OSM, this.LAYER_OCM ],
 		this.LAYER_OCM.id,
 		[ this.circle, this.polygon, this.square, this.marker, this.geoJSON ]

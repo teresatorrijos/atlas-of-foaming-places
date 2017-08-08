@@ -1,5 +1,3 @@
-
-
 <div *ngIf="place">
   <img height="300" [src]="place.imageURL" />
   <h3>{{place.localizacion}}</h3>
@@ -11,9 +9,12 @@
     <h1> Edit Place </h1>
     <form (ngSubmit)="editPlace(place._id, myForm)" #myForm="ngForm">
       <label> Personal Description </label>
-      <input type="text" [(ngModel)]="pdescription" name="pdescription"/>
+      <input type="text" [(ngModel)]="pdescription" name="pdescription" />
       <button type="submit"> Edit place </button>
     </form>
     <p class="error"> {{ error }} </p>
+  </div>
+  <div>
+    <leafletBaselayers [coordinates]="place.localizacion"></leafletBaselayers>
   </div>
 </div>

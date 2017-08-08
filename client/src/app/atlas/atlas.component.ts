@@ -18,8 +18,8 @@ export class AtlasComponent implements OnInit {
   ngOnInit() {
     this.placeService.indexAtlas()
     .subscribe(
-      (place => {
-        this.places = place
+      (places => {
+        this.places = places
         console.log(this.places)}
       ),
       (err => console.log(err))
