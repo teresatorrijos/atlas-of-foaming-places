@@ -14,5 +14,13 @@ const userSchema = new Schema({
   }
 });
 
+userSchema.set('toJSON', { virtuals: true });
+userSchema.virtual('imageURL').get(function() {
+  if(this.pic_path.includes('http')){
+    return this.pic_path;
+  }
+  return `http://localhost:3000${this.pic_path}`;
+});
+
 const User = mongoose.model('User', userSchema);
 module.exports = User;

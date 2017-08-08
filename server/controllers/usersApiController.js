@@ -11,7 +11,8 @@ module.exports = {
 
   edit: (req, res, next) => {
     const updates = {
-      pdescription: req.body.pdescription,
+      email: req.body.email,
+      username: req.body.username,
     };
     User.findByIdAndUpdate(req.params.id, updates).then(user => {
         res.json(user);

@@ -1,4 +1,7 @@
+<app-navbar></app-navbar>
+
 <div *ngIf="user">
+  <img src="{{user.imageURL}}" alt="">
   <h3>{{user.username}}</h3>
   <p>{{user.email}}</p>
 
@@ -7,8 +10,10 @@
   <div *ngIf="show">
     <h1> Edit User </h1>
     <form (ngSubmit)="editUser(user._id, myForm)" #myForm="ngForm">
-      <label> email </label>
+      <label> Email </label>
       <input type="text" [(ngModel)]="email" name="email"/>
+      <label> Username </label>
+      <input type="text" [(ngModel)]="username" name="username"/>
 
       <button type="submit"> Edit user </button>
     </form>
