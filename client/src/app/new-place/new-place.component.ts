@@ -21,19 +21,15 @@ export class NewPlaceComponent implements OnInit {
     pdescription: '',
     tags: []
   };
-  place: any;
   feedback: any;
   user: any;
   error: string;
-  latitude: number;
-  longitude: number;
   localizacion: Array<number>;
   file: any;
 
   constructor(private placeSession: PlaceService,
     private session: SessionService,
     public router: Router) { }
-
 
   ngOnInit() {
     this.session.getLoginEmitter().subscribe(user => this.user = user);
@@ -46,21 +42,6 @@ export class NewPlaceComponent implements OnInit {
       this.feedback = JSON.parse(response).message;
       console.log(this.feedback)
     };
-
-    //   interface HTMLInputEvent extends Event {
-    //     target: HTMLInputElement & EventTarget;
-    //   }
-    //
-    //   document.getElementById("file-input").onchange = function(e?: HTMLInputEvent) {
-    //     EXIF.getData(e.target.files[0], function() {
-    //       let lat = EXIF.getTag(this, "GPSLatitude"),
-    //         latRef = EXIF.getTag(this, "GPSLatitudeRef"),
-    //         long = EXIF.getTag(this, "GPSLongitude"),
-    //         longRef = EXIF.getTag(this, "GPSLongitudeRef");
-    //
-    //     });
-    //   }
-    // }
   }
 
   ConvertDMSToDD(degrees, minutes, seconds, direction) {
@@ -71,8 +52,6 @@ export class NewPlaceComponent implements OnInit {
     return dd;
   }
 
-
-
   fileChangeEvent(e: any) {
     this.file = e.target.files[0]
   }
@@ -82,8 +61,7 @@ export class NewPlaceComponent implements OnInit {
   }
 
   submit() {
-
-    EXIF.getData( this.file, () => {
+    EXIF.getData(this.file, () => {
       const lat = EXIF.getTag(this.file, "GPSLatitude");
       const latRef = EXIF.getTag(this.file, "GPSLatitudeRef");
       const lng = EXIF.getTag(this.file, "GPSLongitude");
@@ -98,10 +76,7 @@ export class NewPlaceComponent implements OnInit {
         form.append('localizacion', JSON.stringify(this.localizacion));
         form.append('tags', JSON.stringify(this.newPlace.tags));
       };
-
       this.uploader.uploadAll();
-
     })
   }
-
 }
