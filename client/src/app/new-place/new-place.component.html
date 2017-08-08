@@ -4,7 +4,7 @@
 
 <form class="col s12">
 
-    <input id="file-input" type="file" name="file" ng2FileSelect [uploader]="uploader" />
+    <input id="file-input" type="file" name="file" (change)="fileChangeEvent($event)" ng2FileSelect [uploader]="uploader" />
 
     <label> Personal Description </label>
     <input type="text" [(ngModel)]="newPlace.pdescription" name="pdescription"/>

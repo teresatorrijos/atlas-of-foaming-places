@@ -1,14 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
 import * as L from 'leaflet';
-import { LeafletCoreDemoModel } from './cartography.model';
+
+import { LeafletCoreDemoModel } from './core-demo.model';
 
 @Component({
-  selector: 'app-cartography',
-  templateUrl: './cartography.component.html',
-  styleUrls: ['./cartography.component.css']
+	selector: 'leafletCoreDemo',
+	templateUrl: './core-demo.component.html',
+	styleUrls: ['./core-demo.component.css']
 })
-export class CartographyComponent implements OnInit {
+export class LeafletCoreDemoComponent {
 
+	/*
+	 * This is a specification of the leaflet options
+	 * The reason to duplicate this object is so we can easily render it to the template
+	 */
 	optionsSpec: {
 		layers: any[],
 		zoom: number,
@@ -79,8 +85,5 @@ export class CartographyComponent implements OnInit {
 
 		return false;
 	}
-  ngOnInit() {
-
-  }
 
 }

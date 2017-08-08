@@ -6,7 +6,9 @@ import { NewPlaceComponent } from './new-place/new-place.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AtlasComponent } from './atlas/atlas.component';
-import { CartographyComponent } from './cartography/cartography.component';
+import { LeafletCoreDemoComponent } from './leaflet/core/core-demo.component';
+import { LeafletBaseLayersDemoComponent } from './leaflet/layers/baselayers-demo.component';
+import { LeafletLayersDemoComponent } from './leaflet/layers/layers-demo.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,5 +19,8 @@ export const routes: Routes = [
   { path: 'places/:id', component: PlaceDetailComponent },
   { path: 'user/:id', component: UserProfileComponent },
   { path: 'atlas', component: AtlasComponent },
-  { path: 'cartography', component: CartographyComponent }
+  { path: 'map', component: LeafletCoreDemoComponent },
+  { path: 'map2', component: LeafletBaseLayersDemoComponent },
+  { path: 'map3', component: LeafletLayersDemoComponent }
+
 ];

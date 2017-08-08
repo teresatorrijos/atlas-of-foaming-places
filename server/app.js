@@ -3,7 +3,6 @@ const express = require('express');
 // const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
 const passport = require('passport');
-
 const app = express();
 
 require('./config/passport/local')(passport);

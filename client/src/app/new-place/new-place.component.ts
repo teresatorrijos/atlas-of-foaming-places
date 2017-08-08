@@ -28,10 +28,12 @@ export class NewPlaceComponent implements OnInit {
   latitude: number;
   longitude: number;
   localizacion: Array<number>;
+  file: any;
 
   constructor(private placeSession: PlaceService,
     private session: SessionService,
     public router: Router) { }
+
 
   ngOnInit() {
     this.session.getLoginEmitter().subscribe(user => this.user = user);
@@ -45,29 +47,34 @@ export class NewPlaceComponent implements OnInit {
       console.log(this.feedback)
     };
 
-    function ConvertDMSToDD(degrees, minutes, seconds, direction) {
-      var dd = degrees + minutes / 60 + seconds / (60 * 60);
-      if (direction == "S" || direction == "W") {
-        dd = dd * -1;
-      }
-      return dd;
-    }
+    //   interface HTMLInputEvent extends Event {
+    //     target: HTMLInputElement & EventTarget;
+    //   }
+    //
+    //   document.getElementById("file-input").onchange = function(e?: HTMLInputEvent) {
+    //     EXIF.getData(e.target.files[0], function() {
+    //       let lat = EXIF.getTag(this, "GPSLatitude"),
+    //         latRef = EXIF.getTag(this, "GPSLatitudeRef"),
+    //         long = EXIF.getTag(this, "GPSLongitude"),
+    //         longRef = EXIF.getTag(this, "GPSLongitudeRef");
+    //
+    //     });
+    //   }
+    // }
+  }
 
-    interface HTMLInputEvent extends Event {
-      target: HTMLInputElement & EventTarget;
+  ConvertDMSToDD(degrees, minutes, seconds, direction) {
+    var dd = degrees + minutes / 60 + seconds / (60 * 60);
+    if (direction == "S" || direction == "W") {
+      dd = dd * -1;
     }
+    return dd;
+  }
 
-    document.getElementById("file-input").onchange = function(e?: HTMLInputEvent) {
-      EXIF.getData(e.target.files[0], function() {
-        let lat = EXIF.getTag(this, "GPSLatitude"),
-          latRef = EXIF.getTag(this, "GPSLatitudeRef"),
-          long = EXIF.getTag(this, "GPSLongitude"),
-          longRef = EXIF.getTag(this, "GPSLongitudeRef");
-        this.latitude = ConvertDMSToDD(lat[0], lat[1], lat[2], latRef);
-        this.longitude = ConvertDMSToDD(long[0], long[1], long[2], longRef);
-        console.log(this.latitude + ", " + this.longitude);
-      });
-    }
+
+
+  fileChangeEvent(e: any) {
+    this.file = e.target.files[0]
   }
 
   addTag(value) {
@@ -75,15 +82,26 @@ export class NewPlaceComponent implements OnInit {
   }
 
   submit() {
-    this.localizacion = [this.latitude, this.longitude];
-    console.log(this.localizacion);
-    this.uploader.onBuildItemForm = (item, form) => {
-      form.append('pdescription', this.newPlace.pdescription);
-      form.append('localizacion', this.localizacion);
-      form.append('tags', JSON.stringify(this.newPlace.tags));
-    };
 
-    this.uploader.uploadAll();
+    EXIF.getData( this.file, () => {
+      const lat = EXIF.getTag(this.file, "GPSLatitude");
+      const latRef = EXIF.getTag(this.file, "GPSLatitudeRef");
+      const lng = EXIF.getTag(this.file, "GPSLongitude");
+      const lngRef = EXIF.getTag(this.file, "GPSLongitudeRef");
+      const latitude = this.ConvertDMSToDD(lat[0].numerator, lat[1].numerator, lat[2].numerator, latRef);
+      const longitude = this.ConvertDMSToDD(lng[0].numerator, lng[1].numerator, lng[2].numerator, lngRef);
+
+      this.localizacion = [latitude, longitude];
+
+      this.uploader.onBuildItemForm = (item, form) => {
+        form.append('pdescription', this.newPlace.pdescription);
+        form.append('localizacion', JSON.stringify(this.localizacion));
+        form.append('tags', JSON.stringify(this.newPlace.tags));
+      };
+
+      this.uploader.uploadAll();
+
+    })
   }
 
 }

@@ -13,9 +13,11 @@ module.exports = {
   },
 
   new: (req, res, next) => {
+    console.log('resolving types');
+    console.log(req.body);
     const place = new Place({
       pdescription: req.body.pdescription || '',
-      localizacion: req.body.localizacion || [],
+      localizacion: JSON.parse(req.body.localizacion) || [],
       creatorId: req.user._id,
       tags: JSON.parse(req.body.tags) || [],
       pic_path: `/uploads/${req.file.filename}` || '',
