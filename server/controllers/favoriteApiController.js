@@ -20,6 +20,15 @@ module.exports = {
         });
       })
       .catch(e => res.json(e));
+  },
+
+  list: (req, res) => {
+    console.log(req.params);
+    FavoriteRelation.find({ placeId: req.params.placeId })
+      .populate('userId').exec()
+      .then( users => {
+        res.json(users);
+      }).catch( errore => res.json(errore));
   }
 
 };
