@@ -14,19 +14,22 @@ import { Component, OnInit } from '@angular/core';
   })
 export class UserProfileComponent implements OnInit {
     user: Object;
-    show: boolean = false;
+    show: boolean;
 
-    constructor(private userService: UserService, private activeRoute: ActivatedRoute, private router: Router) {
+    constructor(
+      private userService: UserService,
+      private activeRoute: ActivatedRoute,
+      private router: Router) {
       activeRoute.params
         .mergeMap(p => userService.show(p.id))
-        .subscribe((resolved) => {
-          console.log(resolved);
-          // this.user = user;
+        .subscribe( userInfo => {
+          this.user = userInfo;
+          console.log(userInfo)
         });
+        this.show = false;
     }
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     showForm() {
       this.show = !this.show;

@@ -23,7 +23,6 @@ module.exports = {
   },
 
   list: (req, res) => {
-    console.log(req.params);
     FavoriteRelation.find({ placeId: req.params.placeId })
       .populate('userId').exec()
       .then( users => {

@@ -46,9 +46,9 @@ export class PlaceService {
 
   convertGms2Dec(degrees, minutes, seconds, direction) {
     var dd = degrees + minutes / 60 + seconds / (60 * 60);
-    if (direction == "S" || direction == "W") {
-      dd = dd * -1;
-    }
+    if (direction == "S" || direction == "W")
+      dd *= -1;
+
     return dd;
   }
 

@@ -2,7 +2,7 @@
 
 <div *ngIf="user">
   <img src="{{user.imageURL}}" alt="">
-  <h3>{{user.username}}</h3>
+  <h3>{{user.user.username }}</h3>
   <p>{{user.email}}</p>
 
   <button type="button" name="button" (click)="remove(user._id)">delete user</button>
@@ -18,5 +18,8 @@
       <button type="submit"> Edit user </button>
     </form>
     <p class="error"> {{ error }} </p>
+  </div>
+  <div *ngFor="let place of user.places">
+    <img src="{{place.imageURL}}">
   </div>
 </div>
