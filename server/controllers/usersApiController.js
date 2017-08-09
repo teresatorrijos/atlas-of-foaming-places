@@ -1,13 +1,32 @@
 const User = require('../models/User');
-// const Place = require('../models/Place');
+const Place = require('../models/Place');
+const FavoriteRelation = require('../models/FavoriteRelation');
 
 module.exports = {
+
   get: (req, res, next) => {
-    User.findById(req.params.id).then(user => {
-        res.json(user);
-      })
-      .catch(e => res.json(e));
-  },
+    User.findById(req.params.id)
+        .exec()
+        .then(user => {
+          Place.find({creatorId: user._id})
+               .exec()
+               .then(places => {
+                 FavoriteRelation.find({
+                     userId: user._id
+                   })
+                   .populate('placeId')
+                   .exec()
+                   .then(favorites => {
+                     res.json({
+                       user:user,
+                       places: places,
+                       favorites: favorites
+                     });
+                });
+            });
+        })
+        .catch(e => next(e));
+},
 
   edit: (req, res, next) => {
     const updates = {

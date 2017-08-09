@@ -14,6 +14,9 @@
     </form>
     <p class="error"> {{ error }} </p>
   </div>
+
+  <button (click)="createFavorite(place._id)">Favorite</button>
+
   <div>
     <leafletBaselayers [coordinates]="place.localizacion"></leafletBaselayers>
   </div>

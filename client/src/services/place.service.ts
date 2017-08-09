@@ -51,4 +51,11 @@ export class PlaceService {
     }
     return dd;
   }
+
+  createFavorite(userId:string, placeId:string):Observable<object> {
+    return this.http.post(`${this.BASE_URL}/api/favorite`, {userId, placeId}, this.options)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
 }

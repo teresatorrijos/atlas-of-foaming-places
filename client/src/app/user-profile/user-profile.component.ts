@@ -19,9 +19,9 @@ export class UserProfileComponent implements OnInit {
     constructor(private userService: UserService, private activeRoute: ActivatedRoute, private router: Router) {
       activeRoute.params
         .mergeMap(p => userService.show(p.id))
-        .subscribe((user: Object) => {
-          console.log(user);
-          this.user = user;
+        .subscribe((resolved) => {
+          console.log(resolved);
+          // this.user = user;
         });
     }
 

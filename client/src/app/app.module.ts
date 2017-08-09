@@ -22,6 +22,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LeafletModule } from '@asymmetrik/angular2-leaflet';
 import { LeafletBaseLayersComponent } from './cartography/baselayers.component';
 import { LeafletLayersComponent } from './cartography/layers.component';
+import { ErrorComponent } from './error/error.component';
+import { HowItWorksComponent } from './how-it-works/how-it-works.component';
+import { GeneralMapComponent } from './general-map/general-map.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { LeafletLayersComponent } from './cartography/layers.component';
     AtlasComponent,
     NavbarComponent,
     LeafletBaseLayersComponent,
-    LeafletLayersComponent
+    LeafletLayersComponent,
+    ErrorComponent,
+    HowItWorksComponent,
+    GeneralMapComponent
   ],
   imports: [
     BrowserModule,
