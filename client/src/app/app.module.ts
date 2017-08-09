@@ -18,7 +18,8 @@ import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AtlasComponent } from './atlas/atlas.component';
 import { NavbarComponent } from './navbar/navbar.component';
-// import { LeafletMapsModule } from './leaflet/leaflet.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import {} from '@types/googlemaps';
 import { LeafletModule } from '@asymmetrik/angular2-leaflet';
 import { LeafletBaseLayersComponent } from './cartography/baselayers.component';
 import { LeafletLayersComponent } from './cartography/layers.component';
@@ -26,6 +27,7 @@ import { ErrorComponent } from './error/error.component';
 import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { GeneralMapComponent } from './general-map/general-map.component';
 import { AgmCoreModule } from '@agm/core';
+import { PruebaComponent } from './prueba/prueba.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { AgmCoreModule } from '@agm/core';
     LeafletLayersComponent,
     ErrorComponent,
     HowItWorksComponent,
-    GeneralMapComponent
+    GeneralMapComponent,
+    PruebaComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { AgmCoreModule } from '@agm/core';
     HttpModule,
     RouterModule.forRoot(routes),
     LeafletModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
   apiKey: 'AIzaSyDE604pNrwO-AYiT5gkdY3KD_o72Qbqyfw',
   libraries: ['places']

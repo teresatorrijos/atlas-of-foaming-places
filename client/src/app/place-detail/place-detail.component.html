@@ -16,8 +16,14 @@
   </div>
 
   <button (click)="createFavorite(place._id)">Favorite</button>
+  <button (click)="createGeoInfo()"> Discover the invisible </button>
+  <div *ngIf="showGeoInfo">
 
-  <div>
-    <leafletBaselayers [coordinates]="place.localizacion"></leafletBaselayers>
+      <ul *ngIf="maps">
+        <li *ngFor="let map of maps">
+          <leafletBaselayers [coordinates]="place.localizacion" [title]="map.title" [description]="map.description" [wmsURL]="map.wmsURL" [layer]="map.layer" [legend]="map.legend"></leafletBaselayers>
+        </li>
+      </ul>
+
   </div>
 </div>

@@ -22,6 +22,9 @@ app.use('/api', usersApi);
 const favoriteApi = require('./routes/favoriteApi');
 app.use('/api/favorite', favoriteApi);
 
+const mapsApi = require('./routes/mapsApi');
+app.use('/api', mapsApi);
+
 app.use((req, res, next) => {
   res.sendfile(__dirname + '/public/index.html');
 });

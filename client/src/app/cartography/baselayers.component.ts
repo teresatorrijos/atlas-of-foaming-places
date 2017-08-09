@@ -10,9 +10,13 @@ import * as L from 'leaflet';
 })
 export class LeafletBaseLayersComponent {
   @Input() coordinates: any;
+  @Input() title: any;
+  @Input() description: any;
+  @Input() wmsURL: any;
+  @Input() layer: any;
+  @Input() legend: any;
   LAYER_OSM: any;
-  LAYER_SENTINEL2: any;
-  LAYER_GEOLOGY: any;
+  layer_wms: any;
   layersControlOptions: any;
   baseLayers: any;
   options: any;
@@ -27,38 +31,25 @@ export class LeafletBaseLayersComponent {
         attribution: 'Open Street Map'
       })
     };
-    this.LAYER_SENTINEL2 = {
-     id: 'sentinel2',
-     name: 'Sentinel 2',
+    this.layer_wms = {
+     id: this.title,
+     name: "WMS",
      enabled: false,
-     layer: L.tileLayer.wms('http://services.sentinel-hub.com/v1/wms/051c0b58-8b0b-4fca-816b-e4c4a4fb6ec9?', {
+     layer: L.tileLayer.wms(this.wmsURL, {
        maxZoom: 30,
-       layers: 'ATMOSPHERIC_PENETRATION',
-       attribution: 'Sentinel 2'
+       layers: this.layer,
+       attribution: 'WMS'
      })
    };
 
-   this.LAYER_GEOLOGY = {
-    id: 'geology',
-    name: 'Geology',
-    enabled: false,
-    layer: L.tileLayer.wms('http://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geologico_200/MapServer/WMSServer?', {
-      maxZoom: 100,
-      layers: '0',
-      attribution: 'IGME'
-    })
-  };
-
    this.layersControlOptions = { position: 'bottomright' };
    this.baseLayers = {
-     'Geology': this.LAYER_GEOLOGY.layer,
-     'Open Street Map': this.LAYER_OSM.layer,
-     'Sentinel 2': this.LAYER_SENTINEL2.layer
-     // 'Open Cycle Map': this.LAYER_OCM.layer
+    //  "WMS": this.layer_wms.layer,
+     'Open Street Map': this.LAYER_OSM.layer
    };
    this.options = {
      zoom: 12,
-     center: L.latLng(0,0)
+     center: L.latLng(39.5,-3)
    };
   }
   ngOnInit(){

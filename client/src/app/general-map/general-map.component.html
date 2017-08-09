@@ -1,6 +1,17 @@
+
 <div class="container map">
     <h1 class="title is-2">Look for your project</h1>
-  <agm-map [latitude]="40.4167278" [longitude]="-3.7033387000000175">
+
+    <div class="field">
+      <p class="control">
+        <input class="input" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search [formControl]="searchControl" size="100">
+      </p>
+    </div>
+    <!-- <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+  <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+</agm-map> -->
+
+  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
     <div *ngFor="let location of locations">
         <agm-marker *ngIf="location.localizacion"  [latitude]="location.localizacion[0]" [longitude]="location.localizacion[1]">
           <agm-info-window [disableAutoPan]="true">
