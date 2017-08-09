@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ApplicationRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SessionService } from '../services/session.service';
 import { PlaceService } from '../services/place.service';
@@ -25,6 +25,7 @@ import { LeafletLayersComponent } from './cartography/layers.component';
 import { ErrorComponent } from './error/error.component';
 import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { GeneralMapComponent } from './general-map/general-map.component';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,10 @@ import { GeneralMapComponent } from './general-map/general-map.component';
     HttpModule,
     RouterModule.forRoot(routes),
     LeafletModule,
-    // LeafletMapsModule
+    AgmCoreModule.forRoot({
+  apiKey: 'AIzaSyDE604pNrwO-AYiT5gkdY3KD_o72Qbqyfw',
+  libraries: ['places']
+})
   ],
   providers: [SessionService, PlaceService],
   bootstrap: [AppComponent]

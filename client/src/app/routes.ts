@@ -6,7 +6,7 @@ import { NewPlaceComponent } from './new-place/new-place.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AtlasComponent } from './atlas/atlas.component';
-// import { LeafletCoreComponent } from './leaflet/core/core.component';
+import { GeneralMapComponent } from './general-map/general-map.component';
 import { LeafletBaseLayersComponent } from './cartography/baselayers.component';
 import { LeafletLayersComponent } from './cartography/layers.component';
 
@@ -19,7 +19,7 @@ export const routes: Routes = [
   { path: 'places/:id', component: PlaceDetailComponent },
   { path: 'user/:id', component: UserProfileComponent },
   { path: 'atlas', component: AtlasComponent },
-  // { path: 'map', component: LeafletCoreComponent },
+  { path: 'geralmap', component: GeneralMapComponent },
   { path: 'map2', component: LeafletBaseLayersComponent },
   { path: 'map3', component: LeafletLayersComponent }
 
