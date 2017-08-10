@@ -19,11 +19,11 @@
   <button (click)="createGeoInfo()"> Discover the invisible </button>
   <div *ngIf="showGeoInfo">
 
-      <ul *ngIf="maps">
-      <li>  <!-- <li *ngFor="let map of maps"> -->
-          <leafletBaselayers [coordinates]="place.localizacion"></leafletBaselayers>
-        </li>
-      </ul>
+    <ul *ngIf="maps">
+      <li *ngFor="let map of maps">
+        <leafletBaselayers [coordinates]="place.localizacion"></leafletBaselayers>
+      </li>
+    </ul>
 
   </div>
 </div>

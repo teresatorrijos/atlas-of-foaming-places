@@ -35,7 +35,7 @@ export class LeafletBaseLayersComponent {
      id: "WMS",
      name: "WMS",
      enabled: false,
-     layer: L.tileLayer.wms("http://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geologico_200/MapServer/WMSServer?", {
+     layer: L.tileLayer.wms("http://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geologico_1M/MapServer/WMSServer?", {
        maxZoom: 30,
        layers: "0",
        attribution: 'WMS'
@@ -48,7 +48,7 @@ export class LeafletBaseLayersComponent {
      'Open Street Map': this.LAYER_OSM.layer
    };
    this.options = {
-     zoom: 12,
+     zoom: 10,
      center: L.latLng(39.5,-3)
    };
   }
@@ -56,3 +56,5 @@ export class LeafletBaseLayersComponent {
     this.options.center = L.latLng(this.coordinates)
   }
 }
+//http://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geologico_1M/MapServer/WMSServer
+//http://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geologico_200/MapServer/WMSServer

@@ -11,8 +11,9 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./signup-form.component.css']
 })
 export class SignupFormComponent implements OnInit {
+  BASE_URL: string = environment.BASE_URL;
   uploader: FileUploader = new FileUploader({
-    url: 'http://localhost:3000/api/auth/signup'
+    url: `${this.BASE_URL}/api/auth/signup`
   });
 
   newUser = {

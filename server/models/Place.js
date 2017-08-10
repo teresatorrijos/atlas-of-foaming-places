@@ -29,7 +29,7 @@ placeSchema.virtual('imageURL').get(function() {
   if(this.pic_path.includes('http')){
     return this.pic_path;
   }
-  return `http://localhost:3000${this.pic_path}`;
+  return `${process.env.HOST}${this.pic_path}`;
 });
 
 const Place = mongoose.model('Place', placeSchema);
