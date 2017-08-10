@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const mapsSchema = new Schema({
+  index: { type: String },
   title: { type: String },
   description: { type: String },
   wmsURL: { type: String },

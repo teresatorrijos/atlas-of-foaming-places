@@ -19,6 +19,7 @@ export class LeafletBaseLayersComponent {
   baseLayers4: any;
   baseLayers5: any;
   options: any;
+  marker: any;
 
   constructor() {
     this.LAYER_OSM = {
@@ -43,81 +44,108 @@ export class LeafletBaseLayersComponent {
         attribution: 'IGME'
       })
     }, {
-      description: "Información de Ocupación de Suelo de España (SIOSE) 2005 y 2011 y CORINE Land Cover (1990, 2000, 2006 y 2012). La denominación de la Cubierta Terrestre y Usos del Suelo es conforme con las especificaciones de la Directiva Inspire 2007/2/EC (nombre, título y estilo Inspire por defecto). Las capas con denominación Inspire de Cubierta Terrestre muestran datos procedentes de CORINE Land Cover, mientras que Usos de Suelo, de SIOSE.",
-      legendURL: "http://www.ign.es/wms-inspire/ocupacion-suelo?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=LU.ExistingLandUse&style=LU.ExistingLandUse.Default",
+        description: "Información de Ocupación de Suelo de España (SIOSE) 2005 y 2011 y CORINE Land Cover (1990, 2000, 2006 y 2012). La denominación de la Cubierta Terrestre y Usos del Suelo es conforme con las especificaciones de la Directiva Inspire 2007/2/EC (nombre, título y estilo Inspire por defecto). Las capas con denominación Inspire de Cubierta Terrestre muestran datos procedentes de CORINE Land Cover, mientras que Usos de Suelo, de SIOSE.",
+        legendURL: "http://www.ign.es/wms-inspire/ocupacion-suelo?service=WMS&request=GetLegendGraphic&format=image%2Fpng&width=20&height=20&layer=LU.ExistingLandUse&style=LU.ExistingLandUse.Default",
 
-      id: "LandUse",
-      name: "Land Use",
-      enabled: false,
-      layer: L.tileLayer.wms("http://www.ign.es/wms-inspire/ocupacion-suelo?", {
-        maxZoom: 30,
-        layers: "LU.ExistingLandUse",
-        attribution: 'IGE'
-      })
-    }, {
-      description: "Servicio Web de Mapas conforme Inspire ISO19128/WMS1.3.0 que permite acceder a Modelos Digitales del Terreno de España en diversos sistemas de referencia: Modelo Digital de Elevaciones, Modelo Digital de Pendientes, Modelo Digital de Orientaciones y Relieve. Contiene una capa que pertenece al Tema de Elevaciones del Anexo II de Inspire y del Anexo I de LISIGE.",
-      legendURL: "http://www.ign.es/wms-inspire/mdt/leyendas/EL.GridCoverage.Default.png",
-      id: "Elevations",
-      name: "Elevations",
-      enabled: false,
-      layer: L.tileLayer.wms("http://www.ign.es/wms-inspire/mdt?", {
-        maxZoom: 30,
-        layers: "EL.GridCoverage",
-        attribution: 'IGE'
-      })
-    }, {
-      description: "Servicio Web de Mapas conforme Inspire ISO19128/WMS1.3.0 que permite acceder a Modelos Digitales del Terreno de España en diversos sistemas de referencia: Modelo Digital de Elevaciones, Modelo Digital de Pendientes, Modelo Digital de Orientaciones y Relieve. Contiene una capa que pertenece al Tema de Elevaciones del Anexo II de Inspire y del Anexo I de LISIGE.",
-      legendURL: "http://www.ign.es/wms-inspire/mdt/leyendas/EL.GridCoverage.Default.png",
-      id: "Elevations",
-      name: "Elevations",
-      enabled: false,
-      layer: L.tileLayer.wms("http://adrase.ceta-ciemat.es/geoserver/Portalgeosolar/wms?", {
-        maxZoom: 30,
-        layers: "GHI",
-        attribution: 'MAGRAMA'
-      })
-    }, {
-      description: "Servicio Web de Mapas conforme Inspire ISO19128/WMS1.3.0 que permite acceder a Modelos Digitales del Terreno de España en diversos sistemas de referencia: Modelo Digital de Elevaciones, Modelo Digital de Pendientes, Modelo Digital de Orientaciones y Relieve. Contiene una capa que pertenece al Tema de Elevaciones del Anexo II de Inspire y del Anexo I de LISIGE.",
-      legendURL: "http://www.ign.es/wms-inspire/mdt/leyendas/EL.GridCoverage.Default.png",
-      id: "Elevations",
-      name: "Elevations",
-      enabled: false,
-      layer: L.tileLayer.wms("https://landsatlook.usgs.gov/arcgis/services/Sentinel2/ImageServer/WMSServer?", {
-        maxZoom: 30,
-        layers: "0",
-        attribution: 'MAGRAMA'
-      })
-    }];
+        id: "LandUse",
+        name: "Land Use",
+        enabled: false,
+        layer: L.tileLayer.wms("http://www.ign.es/wms-inspire/ocupacion-suelo?", {
+          maxZoom: 30,
+          layers: "LU.ExistingLandUse",
+          attribution: 'IGE'
+        })
+      }, {
+        description: "Servicio Web de Mapas conforme Inspire ISO19128/WMS1.3.0 que permite acceder a Modelos Digitales del Terreno de España en diversos sistemas de referencia: Modelo Digital de Elevaciones, Modelo Digital de Pendientes, Modelo Digital de Orientaciones y Relieve. Contiene una capa que pertenece al Tema de Elevaciones del Anexo II de Inspire y del Anexo I de LISIGE.",
+        legendURL: "http://www.ign.es/wms-inspire/mdt/leyendas/EL.GridCoverage.Default.png",
+        id: "Elevations",
+        name: "Elevations",
+        enabled: false,
+        layer: L.tileLayer.wms("http://www.ign.es/wms-inspire/mdt?", {
+          maxZoom: 30,
+          layers: "EL.GridCoverage",
+          attribution: 'IGE'
+        })
+      }, {
+        description: "Servicio Web de Mapas conforme Inspire ISO19128/WMS1.3.0 que permite acceder a Modelos Digitales del Terreno de España en diversos sistemas de referencia: Modelo Digital de Elevaciones, Modelo Digital de Pendientes, Modelo Digital de Orientaciones y Relieve. Contiene una capa que pertenece al Tema de Elevaciones del Anexo II de Inspire y del Anexo I de LISIGE.",
+        legendURL: "http://www.ign.es/wms-inspire/mdt/leyendas/EL.GridCoverage.Default.png",
+        id: "Elevations",
+        name: "Elevations",
+        enabled: false,
+        layer: L.tileLayer.wms("http://adrase.ceta-ciemat.es/geoserver/Portalgeosolar/wms?", {
+          maxZoom: 30,
+          layers: "GHI",
+          attribution: 'MAGRAMA'
+        })
+      }, {
+        description: "Servicio Web de Mapas conforme Inspire ISO19128/WMS1.3.0 que permite acceder a Modelos Digitales del Terreno de España en diversos sistemas de referencia: Modelo Digital de Elevaciones, Modelo Digital de Pendientes, Modelo Digital de Orientaciones y Relieve. Contiene una capa que pertenece al Tema de Elevaciones del Anexo II de Inspire y del Anexo I de LISIGE.",
+        legendURL: "http://www.ign.es/wms-inspire/mdt/leyendas/EL.GridCoverage.Default.png",
+        id: "Elevations",
+        name: "Elevations",
+        enabled: false,
+        layer: L.tileLayer.wms("https://landsatlook.usgs.gov/arcgis/services/Sentinel2/ImageServer/WMSServer?", {
+          maxZoom: 30,
+          layers: "0",
+          attribution: 'MAGRAMA'
+        })
+      }];
 
-    this.layersControlOptions = { position: 'bottomright' };
+    this.marker = {
+      id: 'marker',
+      name: 'Marker',
+      enabled: true,
+      layer: L.marker(this.coordinates, {
+        icon: L.icon({
+          iconSize: [25, 41],
+          iconAnchor: [13, 41],
+          iconUrl: 'assets/marker_hole.png',
+          shadowUrl: 'assets/marker_hole.png'
+        })
+      })
+    };
+
+    this.layersControlOptions = {
+      position: 'bottomright',
+      // overlays: {
+      //   Marker: this.marker.layer
+      // }
+    };
+
     this.baseLayers1 = {
       "WMS": this.layersWms[0].layer,
       'Open Street Map': this.LAYER_OSM.layer
     };
+
     this.baseLayers2 = {
       "WMS": this.layersWms[1].layer,
       'Open Street Map': this.LAYER_OSM.layer
     };
+
     this.baseLayers3 = {
       "WMS": this.layersWms[2].layer,
       'Open Street Map': this.LAYER_OSM.layer
     };
+
     this.baseLayers4 = {
       "WMS": this.layersWms[3].layer,
       'Open Street Map': this.LAYER_OSM.layer
     };
+
     this.baseLayers5 = {
       "WMS": this.layersWms[4].layer,
       'Open Street Map': this.LAYER_OSM.layer
     };
+
     this.options = {
       zoom: 10,
       center: L.latLng(39.5, -3)
     };
   }
+
   ngOnInit() {
     this.options.center = L.latLng(this.coordinates)
   }
+
 }
 //http://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geologico_1M/MapServer/WMSServer
 //http://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geologico_200/MapServer/WMSServer

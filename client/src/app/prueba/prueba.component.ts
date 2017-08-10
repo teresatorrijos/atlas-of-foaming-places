@@ -1,6 +1,5 @@
 
   import { Component, OnInit, Input } from '@angular/core';
-
   import * as L from 'leaflet';
 
   @Component({
@@ -8,60 +7,43 @@
     templateUrl: './prueba.component.html',
     styleUrls: ['./prueba.component.css']
   })
-export class PruebaComponent {
-    // @Input() coordinates: any;
-    LAYER_OSM: any;
-    LAYER_SENTINEL2: any;
-    LAYER_GEOLOGY: any;
-    layersControlOptions: any;
-    baseLayers: any;
-    options: any;
 
-    constructor(){
-      this.LAYER_OSM = {
-        id: 'openstreetmap',
-        name: 'Open Street Map',
-        enabled: false,
-        layer: L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 30,
-          attribution: 'Open Street Map'
-        })
-      };
-      this.LAYER_SENTINEL2 = {
-       id: 'sentinel2',
-       name: 'Sentinel 2',
-       enabled: false,
-       layer: L.tileLayer.wms('http://services.sentinel-hub.com/v1/wms/051c0b58-8b0b-4fca-816b-e4c4a4fb6ec9?', {
-         maxZoom: 30,
-         layers: 'ATMOSPHERIC_PENETRATION',
-         attribution: 'Sentinel 2'
-       })
-     };
+  export class PruebaComponent {
+    name:any;
+    @Input() index:any;
+    @Input() wmsURL:any;
+    @Input() layerWMS:any;
+    @Input() coordinates:any;
+    map: L.Map;
 
-     this.LAYER_GEOLOGY = {
-      id: 'geology',
-      name: 'Geology',
-      enabled: false,
-      layer: L.tileLayer.wms('http://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geologico_200/MapServer/WMSServer?', {
-        maxZoom: 100,
-        layers: '0',
-        attribution: 'IGME'
-      })
-    };
 
-     this.layersControlOptions = { position: 'bottomright' };
-     this.baseLayers = {
-       'Geology': this.LAYER_GEOLOGY.layer,
-       'Open Street Map': this.LAYER_OSM.layer,
-       'Sentinel 2': this.LAYER_SENTINEL2.layer
-       // 'Open Cycle Map': this.LAYER_OCM.layer
-     };
-     this.options = {
-       zoom: 12,
-       center: L.latLng(0,0)
-     };
-    }
-    ngOnInit(){
-      this.options.center = L.latLng(39.5, -3)
+    ngAfterViewInit() {
+      this.name = "map"+this.index;
+      this.map = new L.Map(this.name, {
+        center: new L.LatLng(this.coordinates[0], this.coordinates[1]),
+        zoom: 10
+      });
+
+      // var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',  {
+      //   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      //   maxZoom: 18
+      // }).addTo(this.map);
+
+      var wmsLayer = L.tileLayer.wms(this.wmsURL, {
+          layers: this.layerWMS
+      }).addTo(this.map);
+
+      var d= L.marker(this.coordinates, {
+        icon: L.icon({
+          iconSize: [41, 41],
+          iconAnchor: [41, 41],
+          iconUrl: 'assets/33622.png'
+        }),
+        clickable: true
+
+      }).on('click',
+        (data) => {
+          // alert("I have a click.")
+        } ).addTo(this.map)
     }
   }

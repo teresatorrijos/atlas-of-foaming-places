@@ -18,12 +18,14 @@
   <button (click)="createFavorite(place._id)">Favorite</button>
   <button (click)="createGeoInfo()"> Discover the invisible </button>
   <div *ngIf="showGeoInfo">
-    <!-- <div *ngIf="maps"> -->
-      <!-- <li *ngFor="let map of maps"> -->
-        <leafletBaselayers [coordinates]="place.localizacion">
-        </leafletBaselayers>
-      <!-- </li> -->
-    <!-- </div> -->
+    <div *ngIf="maps">
+      <li *ngFor="let map of maps">
+
+        <app-prueba [coordinates]="place.localizacion" [wmsURL]="map.wmsURL" [layerWMS]="map.layer" [index]="map.index"></app-prueba>
+        <!-- <leafletBaselayers [coordinates]="place.localizacion">
+        </leafletBaselayers> -->
+      </li>
+    </div>
   </div>
 </div>
 <!-- <header id="top" class="header container-fluid">
