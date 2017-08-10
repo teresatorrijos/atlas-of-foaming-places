@@ -10,19 +10,31 @@ footer {
     margin: 50px 0;
 }
 
-.block {
-  margin-top: 20px;
-}
-
 .thumbnail {
   border: 0px;
   margin: 40px 10px 0px 10px;;
+}
+
+.block {
+  margin-top: 60px;
 }
 
 h3 {
   font-size: 33px;
 }
 
-.navbar-inverse {
+.black {
+  color: black;
+}
+
+.navbar-inverse ul.navbar-nav li a {
+  color: black;
+}
+
+.navbar-inverse ul.navbar-nav li a:focus {
+  color: black;
+}
+
+.navbar-inverse ul.navbar-nav li a:hover {
   color: black;
 }

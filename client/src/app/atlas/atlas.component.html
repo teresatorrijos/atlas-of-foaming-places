@@ -1,31 +1,67 @@
-<!-- <app-navbar [style.color]="'black'"></app-navbar> -->
-<h3> Atlas of landscapes </h3>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-<!-- <div>
-  <button type="button" name="button" [routerLink]="['/new']">Create New Place</button>
-</div> -->
+  <nav role="navigation" class="navbar navbar-inverse navbar-no-bg black">
+    <div class="container black ">
+      <div class="navbar-header black">
+        <button data-target="#top-navbar-1" data-toggle="collapse" class="navbar-toggle collapsed black" type="button">
+							<span class="sr-only black">Toggle navigation</span>
+							<span class="icon-bar black"></span>
+							<span class="icon-bar black"></span>
+							<span class="icon-bar black"></span>
+						</button>
+        <a href="/home" class="navbar-brand black"><i class="fa fa-bullseye"></i></a>
+        <span class="main-name black">ATLAS OF LANDSCAPES</span>
+      </div>
+      <div id="top-navbar-1" class="collapse navbar-collapse black">
+        <ul class="nav navbar-nav navbar-right black">
+          <li><a href="/atlas" class="scroll-link black">Atlas</a></li>
+          <li><a href="/cartography" class="scroll-link black">Cartography</a></li>
+          <li><a href="#how-it-works" class="scroll-link black">How it works</a></li>
+          <li><a href="/login" class="scroll-link black">Login</a></li>
+          <li><a href="/signup" class="scroll-link black">Signup</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<!-- <div *ngIf="(places)">
-  <div *ngFor="let place of places" class="blocky">
-    <h3> {{ place.localizacion }} </h3>
-    <p> {{ place.pdescription }} </p>
-    <a [routerLink]="['/places', place._id]"> View Details </a>
-  </div>
-</div> -->
-  <div class="container">
-<div class="row block">
-  <div *ngIf="(places)">
-    <div *ngFor="let place of places" class="col-xs-6 col-md-3">
-      <a href="" class="thumbnail">
+<!-- <h3> Atlas of landscapes </h3> -->
+
+<div class="container">
+  <div class="row block">
+    <div *ngIf="(places)">
+      <div *ngFor="let place of places" class="col-xs-6 col-md-3">
+        <a href="" class="thumbnail">
         <img src="{{ place.imageURL }}" alt="..." >
       </a>
-      <!-- <div class="caption"> -->
-      <h6> <a href="#"> [{{ place.localizacion[0] }} N,  <br> {{ place.localizacion[1] }} E] </a> </h6>
-      <!-- <p>{{ place.pdescription }}</p> -->
-      <!-- <a [routerLink]="['/places', place._id]" class="btn btn-primary" role="button">View Details</a> -->
-    <!-- </div> -->
+        <!-- <div class="caption"> -->
+        <h6> <a href="#"> [{{ place.localizacion[0] }} N,  <br> {{ place.localizacion[1] }} E] </a> </h6>
+        <!-- <p>{{ place.pdescription }}</p> -->
+        <!-- <a [routerLink]="['/places', place._id]" class="btn btn-primary" role="button">View Details</a> -->
+        <!-- </div> -->
+      </div>
     </div>
   </div>
 </div>
-</div>
+
 <app-general-map></app-general-map>
+
+<footer class="text-center bck_gray">
+  <div class="footer-below">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="social_icon_list">
+            <li><a class="fb_icon" target="_blank" href="https://www.facebook.com/teresa.torrijos.garcia"><i class="fa fa-facebook"></i></a></li>
+            <li><a class="twit_icon" target="_blank" href="https://twitter.com/teresatorrijos"><i class="fa fa-twitter"></i></a></li>
+            <li><a target="_blank" href="#" class="gogle_plus_icon"><i class="fa fa-google-plus"></i></a></li>
+            <li><a target="_blank" href="https://www.instagram.com/teresatorrijos/" class="vimeo_icon"><i class="fa fa-instagram"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-lg-12 mar_bot_top_ten">
+          <br> © <i class="fa fa-bullseye"></i> 2017. Design by
+          <a href="https://www.facebook.com/teresa.torrijos.garcia" title="gurdeeposahan" target="_blank">Tetis</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
