@@ -18,7 +18,7 @@ export class PlaceDetailComponent implements OnInit {
   place: Object;
   show: boolean;
   showGeoInfo: boolean;
-  maps: Object;
+  maps: any;
 
   constructor(
     private placeService: PlaceService,
@@ -57,6 +57,8 @@ export class PlaceDetailComponent implements OnInit {
 
   createGeoInfo() {
     this.showGeoInfo = !this.showGeoInfo;
-    this.mapService.indexMaps().subscribe(maps => this.maps=maps);
+    this.mapService.indexMaps().subscribe(maps => {
+       this.maps=maps;
+     console.log(this.maps); });
   }
 }

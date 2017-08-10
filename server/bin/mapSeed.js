@@ -8,7 +8,7 @@ mongoose.connect(dbURL)
     let maps = [{
       title: "Geological Map",
       description: "Mapa con las unidades cronolitoestratigráficas de la zona cubierta por la hoja separadas por distintos tipos de contactos: normal o concordante, discordante, intrusivo y de otra índole. La estructura tectónica se representa mediante las trazas cartográficas de los pliegues, la orientación y buzamiento de los elementos planares y lineares contenidos en las rocas, así como por la relación estructural -mediante fallas y cabalgamientos- entre los conjuntos rocosos diferenciados cartográficamente.",
-      wmsURL: "http://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geologico_200/MapServer/WMSServer?",
+      wmsURL: "http://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geologico_1M/MapServer/WMSServer?",
       layer: "0",
       legendURL: "http://mapas.igme.es/servicios/WMS/Legends/Geo1M_LitologiasColor.png",
       timestamps: {
