@@ -10,13 +10,13 @@ import * as L from 'leaflet';
 })
 export class LeafletBaseLayersComponent {
   @Input() coordinates: any;
-  @Input() title: any;
-  @Input() description: any;
+  // @Input() title: any;
+  // @Input() description: any;
   @Input() wmsURL: any;
   @Input() layer: any;
-  @Input() legend: any;
+  // @Input() legend: any;
   LAYER_OSM: any;
-  layer_wms: any;
+  LAYER_WMS: any;
   layersControlOptions: any;
   baseLayers: any;
   options: any;
@@ -31,20 +31,20 @@ export class LeafletBaseLayersComponent {
         attribution: 'Open Street Map'
       })
     };
-    this.layer_wms = {
-     id: this.title,
+    this.LAYER_WMS = {
+     id: "WMS",
      name: "WMS",
      enabled: false,
-     layer: L.tileLayer.wms(this.wmsURL, {
+     layer: L.tileLayer.wms("http://mapas.igme.es/gis/services/Cartografia_Geologica/IGME_Geologico_200/MapServer/WMSServer?", {
        maxZoom: 30,
-       layers: this.layer,
+       layers: "0",
        attribution: 'WMS'
      })
    };
 
    this.layersControlOptions = { position: 'bottomright' };
    this.baseLayers = {
-    //  "WMS": this.layer_wms.layer,
+     "WMS": this.LAYER_WMS.layer,
      'Open Street Map': this.LAYER_OSM.layer
    };
    this.options = {

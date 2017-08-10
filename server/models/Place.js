@@ -11,6 +11,7 @@ const placeSchema = new Schema({
      type: Array,
      default: []
    },
+   locateDegree: { type: String},
   pic_path: { type: String},
   tags: {
      type: Array,

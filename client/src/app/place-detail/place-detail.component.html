@@ -20,10 +20,40 @@
   <div *ngIf="showGeoInfo">
 
       <ul *ngIf="maps">
-        <li *ngFor="let map of maps">
-          <leafletBaselayers [coordinates]="place.localizacion" [title]="map.title" [description]="map.description" [wmsURL]="map.wmsURL" [layer]="map.layer" [legend]="map.legend"></leafletBaselayers>
+      <li>  <!-- <li *ngFor="let map of maps"> -->
+          <leafletBaselayers [coordinates]="place.localizacion"></leafletBaselayers>
         </li>
       </ul>
 
   </div>
 </div>
+<!-- <header id="top" class="header container-fluid">
+
+</header> -->
+
+
+<!-- <div class="top-content image-detail" style="position: relative; z-index: 0; ">
+  <app-navbar></app-navbar>
+  <div class="crop">
+  <img  class= "chachi-image" width="100%" src="{{ place.imageURL }}" alt="">
+</div>
+  <div class="inner-bg">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-7 adjust-height text wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+          <h1>Promote <strong>Your App</strong> With <i class="fa fa-bullseye"></i> <br>Get it now!</h1>
+          <div class="description">
+holi holi holi
+          </div>
+          <div class="top-big-link">
+            <a href="https://web.facebook.com/iamgurdeeposahan" target="_blank" class="btn btn-link-1">Download it</a>
+            <a href="https://web.facebook.com/iamgurdeeposahan" target="_blank" class="btn btn-link-2 scroll-link">Learn more</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- </div> -->

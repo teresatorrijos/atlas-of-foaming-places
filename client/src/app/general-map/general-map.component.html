@@ -9,13 +9,13 @@
     </div>
 </div>
 
-  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [scrollwheel]="false">
     <div *ngFor="let location of locations">
         <agm-marker *ngIf="location.localizacion"  [latitude]="location.localizacion[0]" [longitude]="location.localizacion[1]"  >
           <agm-info-window [disableAutoPan]="true">
             <!-- <img src="location.imageURL" alt="" height="20px"> -->
 
-          <a [routerLink]="['/places',location._id]"> {{location.localizacion}}</a>
+          <a [routerLink]="['/places',location._id]"> {{location.locateDegree}}</a>
          </agm-info-window>
         </agm-marker>
     </div>

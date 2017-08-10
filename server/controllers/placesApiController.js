@@ -17,6 +17,7 @@ module.exports = {
     console.log(req.body);
     const place = new Place({
       pdescription: req.body.pdescription || '',
+      locateDegree: req.body.locateDegree || '',
       localizacion: JSON.parse(req.body.localizacion) || [],
       creatorId: req.user._id,
       tags: JSON.parse(req.body.tags) || [],

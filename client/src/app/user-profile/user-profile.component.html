@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <div *ngIf="user">
-  <img src="{{user.imageURL}}" alt="">
+  <img src="{{user.user.imageURL}}" alt="">
   <h3>{{user.user.username }}</h3>
   <p>{{user.email}}</p>
 

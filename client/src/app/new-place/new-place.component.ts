@@ -14,7 +14,7 @@ import { EXIF } from "exif-js";
 })
 export class NewPlaceComponent implements OnInit {
   BASE_URL: string = environment.BASE_URL;
-  
+
   uploader: FileUploader = new FileUploader({
     url: `${this.BASE_URL}/api/places/new`
   });
@@ -28,6 +28,7 @@ export class NewPlaceComponent implements OnInit {
   user: any;
   error: string;
   localizacion: Array<number>;
+  locateDegree: any;
   file: any;
 
   constructor(private placeService: PlaceService,
@@ -61,14 +62,14 @@ export class NewPlaceComponent implements OnInit {
       const latRef = EXIF.getTag(this.file, "GPSLatitudeRef");
       const lng = EXIF.getTag(this.file, "GPSLongitude");
       const lngRef = EXIF.getTag(this.file, "GPSLongitudeRef");
-      console.log(lat[2].numerator)
       const latitude = this.placeService.convertGms2Dec(lat[0].numerator, lat[1].numerator, (lat[2].numerator)/100, latRef);
       const longitude = this.placeService.convertGms2Dec(lng[0].numerator, lng[1].numerator, (lng[2].numerator)/100, lngRef);
-
+      this.locateDegree = "["+lat+" "+latRef+", "+lng+" "+lngRef+"]";
       this.localizacion = [latitude, longitude];
 
       this.uploader.onBuildItemForm = (item, form) => {
         form.append('pdescription', this.newPlace.pdescription);
+        form.append('locateDegree', this.locateDegree);
         form.append('localizacion', JSON.stringify(this.localizacion));
         form.append('tags', JSON.stringify(this.newPlace.tags));
       };
