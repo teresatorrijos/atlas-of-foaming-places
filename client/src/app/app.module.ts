@@ -9,7 +9,7 @@ import { routes } from './routes';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { Routes } from "@angular/router";
-import { FileSelectDirective } from "ng2-file-upload";
+import { FileUploadModule } from "ng2-file-upload";
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { HomeComponent } from './home/home.component';
@@ -36,7 +36,6 @@ import { PruebaComponent } from './prueba/prueba.component';
     SignupFormComponent,
     HomeComponent,
     NewPlaceComponent,
-    FileSelectDirective,
     PlaceDetailComponent,
     UserProfileComponent,
     AtlasComponent,
@@ -54,6 +53,7 @@ import { PruebaComponent } from './prueba/prueba.component';
     HttpModule,
     RouterModule.forRoot(routes),
     LeafletModule,
+    FileUploadModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
   apiKey: 'AIzaSyDE604pNrwO-AYiT5gkdY3KD_o72Qbqyfw',
