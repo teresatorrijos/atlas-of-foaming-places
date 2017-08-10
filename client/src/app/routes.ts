@@ -9,6 +9,7 @@ import { AtlasComponent } from './atlas/atlas.component';
 import { GeneralMapComponent } from './general-map/general-map.component';
 import { LeafletBaseLayersComponent } from './cartography/baselayers.component';
 import { LeafletLayersComponent } from './cartography/layers.component';
+import { ErrorComponent } from './error/error.component';
 import { PruebaComponent } from './prueba/prueba.component';
 
 export const routes: Routes = [
@@ -23,6 +24,7 @@ export const routes: Routes = [
   { path: 'geralmap', component: GeneralMapComponent },
   { path: 'map2', component: LeafletBaseLayersComponent },
   { path: 'map3', component: LeafletLayersComponent },
-  { path: 'prueba', component: PruebaComponent }
-
+  { path: 'prueba', component: PruebaComponent },
+  { path: 'error', component: ErrorComponent },
+  { path: '**', redirectTo: '/error', pathMatch: 'full' }
 ];

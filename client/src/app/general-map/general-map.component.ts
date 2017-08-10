@@ -34,7 +34,7 @@ export class GeneralMapComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.zoom = 5;
+    this.zoom = 6;
 this.latitude = 39.5;
 this.longitude = -3;
     //create search FormControl

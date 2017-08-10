@@ -1,10 +1,9 @@
-<app-navbar>
-</app-navbar>
-<h3> Place List </h3>
+<!-- <app-navbar [style.color]="'black'"></app-navbar> -->
+<h3> Atlas of landscapes </h3>
 
-<div>
+<!-- <div>
   <button type="button" name="button" [routerLink]="['/new']">Create New Place</button>
-</div>
+</div> -->
 
 <!-- <div *ngIf="(places)">
   <div *ngFor="let place of places" class="blocky">
@@ -13,18 +12,20 @@
     <a [routerLink]="['/places', place._id]"> View Details </a>
   </div>
 </div> -->
-
-<div class="row">
+  <div class="container">
+<div class="row block">
   <div *ngIf="(places)">
-    <div *ngFor="let place of places" class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <img src="{{ place.imageURL }}" alt="...">
-        <div class="caption">
-          <h3> {{ place.localizacion }} </h3>
-          <p>{{ place.pdescription }}</p>
-          <a [routerLink]="['/places', place._id]" class="btn btn-primary" role="button">View Details</a>
-        </div>
-      </div>
+    <div *ngFor="let place of places" class="col-xs-6 col-md-3">
+      <a href="" class="thumbnail">
+        <img src="{{ place.imageURL }}" alt="..." >
+      </a>
+      <!-- <div class="caption"> -->
+      <h6> <a href="#"> [{{ place.localizacion[0] }} N,  <br> {{ place.localizacion[1] }} E] </a> </h6>
+      <!-- <p>{{ place.pdescription }}</p> -->
+      <!-- <a [routerLink]="['/places', place._id]" class="btn btn-primary" role="button">View Details</a> -->
+    <!-- </div> -->
     </div>
   </div>
 </div>
+</div>
+<app-general-map></app-general-map>

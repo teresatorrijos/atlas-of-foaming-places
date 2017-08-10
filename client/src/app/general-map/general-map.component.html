@@ -1,23 +1,24 @@
 
-<div class="container map">
-    <h1 class="title is-2">Look for your project</h1>
 
+
+<div class="container map">
     <div class="field">
-      <p class="control">
-        <input class="input" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search [formControl]="searchControl" size="100">
+      <p class="control ">
+        <input class="input form-control" placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search [formControl]="searchControl" size="100">
       </p>
     </div>
-    <!-- <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
-  <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-</agm-map> -->
+</div>
 
   <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
     <div *ngFor="let location of locations">
-        <agm-marker *ngIf="location.localizacion"  [latitude]="location.localizacion[0]" [longitude]="location.localizacion[1]">
+        <agm-marker *ngIf="location.localizacion"  [latitude]="location.localizacion[0]" [longitude]="location.localizacion[1]"  >
           <agm-info-window [disableAutoPan]="true">
-          <a [routerLink]="['/places',location._id]">{{location.localizacion}}</a>
+            <!-- <img src="location.imageURL" alt="" height="20px"> -->
+
+          <a [routerLink]="['/places',location._id]"> {{location.localizacion}}</a>
          </agm-info-window>
         </agm-marker>
     </div>
   </agm-map>
-</div>
+
+<!-- [iconUrl]="location.imageURL" -->

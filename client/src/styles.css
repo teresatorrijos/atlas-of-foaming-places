@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+a {
+  color: black;
+}
+
+body h3 {
+  font: 200 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+}
 
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
