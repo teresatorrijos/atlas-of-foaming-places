@@ -1,25 +1,101 @@
-<app-navbar></app-navbar>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-<div *ngIf="user">
-  <img src="{{user.user.imageURL}}" alt="">
-  <h3>{{user.user.username }}</h3>
-  <p>{{user.email}}</p>
+  <nav role="navigation" class="navbar navbar-inverse navbar-no-bg black">
+    <div class="container black ">
+      <div class="navbar-header black">
+        <button data-target="#top-navbar-1" data-toggle="collapse" class="navbar-toggle collapsed black" type="button">
+							<span class="sr-only black">Toggle navigation</span>
+							<span class="icon-bar black"></span>
+							<span class="icon-bar black"></span>
+							<span class="icon-bar black"></span>
+						</button>
+        <a href="/home" class="navbar-brand black"><i class="fa fa-bullseye"></i></a>
+        <a href="/home"><span class="main-name black">ATLAS OF LANDSCAPES</span></a>
+      </div>
+      <div id="top-navbar-1" class="collapse navbar-collapse black">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/atlas" class="scroll-link">Atlas</a></li>
+          <li><a href="/new" class="scroll-link">Upload a photo</a></li>
+          <li><a href="#how-it-works" class="scroll-link">How it works</a></li>
+          <li><a href="#" class="scroll-link">My Profile</a></li>
+          <li><a href="/login" class="scroll-link">Login</a></li>
+          <li><a href="/signup" class="scroll-link">Signup</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <button type="button" name="button" (click)="remove(user._id)">delete user</button>
-  <button type="button" name="button" (click)="showForm()">EDIT</button>
-  <div *ngIf="show">
-    <h1> Edit User </h1>
-    <form (ngSubmit)="editUser(user._id, myForm)" #myForm="ngForm">
-      <label> Email </label>
-      <input type="text" [(ngModel)]="email" name="email"/>
-      <label> Username </label>
-      <input type="text" [(ngModel)]="username" name="username"/>
 
-      <button type="submit"> Edit user </button>
-    </form>
-    <p class="error"> {{ error }} </p>
+<div class="cuerpo">
+<div class="main-header container-fluid">
+  <div class="intro">
+    <div *ngIf="user.user" class="container text-center">
+      <img class="img-thumbnail" src="{{user.user.imageURL}}" alt="" width="140">
+      <h1 class="name">{{user.user.username }}</h1>
+      <!-- <div class="name"> -->
+        <!-- <p>{{user.user.name }}</p> -->
+      <!-- </div> -->
+    </div>
   </div>
-  <div *ngFor="let place of user.places">
-    <img src="{{place.imageURL}}">
+  <div class="contact-info">
+    <div class="container text-center">
+      <ul class="list-inline">
+        <li class="email"><i class="fa fa-envelope"></i><a href="#" style="color: white;">{{user.user.email}}</a></li>
+      </ul>
+    </div>
   </div>
+</div>
+<div class="col-lg-12 col-sm-6 container">
+  <div id="main-button" class=" btn-created" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+      <button type="button" id="stars" class="btn btn-link-1" href="#tab1" data-toggle="tab"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                <div class="hidden-xs">Landscapes created</div>
+            </button>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="button" id="favorites" class="btn btn-link-2" href="#tab2" data-toggle="tab"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                <div class="hidden-xs">Favourite Landscapes</div>
+            </button>
+    </div>
+  </div>
+  </div>
+  <div class="boxy">
+  <div class="container profile-events">
+    <div class="tab-content">
+      <div *ngIf="user.places" class="tab-pane fade in active" id="tab1">
+        <div *ngFor="let place of user.places">
+
+          <div class="item frontend col-sm-3 col-xs-6  size-profile">
+            <div class="item-inner">
+              <figure class="figure">
+            <a [routerLink]="['/places',place._id]">
+                <img class="img-portfolio img-responsive" src="{{place.imageURL}}">
+                </a>
+              </figure>
+              <div class="content text-left">
+                <h3>{{place.locateDegree}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="user.favorites" class="tab-pane fade in" id="tab2">
+        <div *ngFor="let favorite of user.favorites">
+          <div class="item frontend col-md-3 col-xs-6 size-profile">
+            <div class="item-inner">
+              <figure class="figure">
+                <a [routerLink]="['/places',favorite._id]">
+                <img class="img-portfolio img-responsive" src="{{favorite.imageURL}}">
+                </a>
+              </figure>
+              <div class="content text-left">
+                <h3>{{favorite.locateDegree}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

@@ -24,12 +24,13 @@ body {
 }
 
 .top-content {
-  /*background-image: url("assets/images/cultivosrelieve1.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), url("assets/images/01.jpg");
+  /*background-image: url("assets/images/01.jpg");*/
   background-repeat: no-repeat;
   background-position: right top;
-  background-attachment: fixed;*/
-  background: rgba(0, 0, 0, 0) linear-gradient(135deg, #0c2e2f 0%, #08dfe5 100%) repeat scroll 0 0;
-  background-color: #0c2e2f;
+  background-attachment: fixed;
+  /*background: rgba(0, 0, 0, 0) linear-gradient(135deg, #0c2e2f 0%, #08dfe5 100%) repeat scroll 0 0;
+  background-color: #0c2e2f;*/
   /*background: rgba(0, 0, 0, 0) linear-gradient(135deg, #01b9ff 0%, #ba78fe 51%, #ea51bd 100%) repeat scroll 0 0;
   background-color: #ba78fe;*/
 }
@@ -390,4 +391,47 @@ footer .mar_bot_top_ten a {
 
 .vendors {
   margin: 50px 0 0;
+}
+
+/* layout.css Style */
+.upload-drop-zone {
+  height: 200px;
+  border-width: 2px;
+  margin-bottom: 20px;
+}
+
+/* skin.css Style*/
+.upload-drop-zone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 200px;
+  text-align: center
+}
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
+}
+
+.file-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
+.file-preview-input input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+.file-preview-input-title {
+    margin-left:2px;
 }

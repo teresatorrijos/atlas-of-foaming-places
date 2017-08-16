@@ -7,12 +7,8 @@ const mapsSchema = new Schema({
   description: { type: String },
   wmsURL: { type: String },
   layer: { type: String },
-  legendURL: { type: String }
-}, {
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
-  }
+  legendURL: { type: String },
+  zoom: { type: Number }
 });
 
 const Maps = mongoose.model('Maps', mapsSchema);

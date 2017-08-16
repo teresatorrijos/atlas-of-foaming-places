@@ -26,17 +26,18 @@ export class PlaceDetailComponent implements OnInit {
     private router: Router,
     private session: SessionService,
     private mapService: MapService
+
   ) {
-      activeRoute.params.mergeMap( p => placeService.show(p.id))
-        .subscribe((place: Object) => {
-          console.log(place);
-          this.place = place;
-        });
-      this.show = false;
-      this.showGeoInfo = false;
+    activeRoute.params.mergeMap(p => placeService.show(p.id))
+      .subscribe((place: Object) => {
+        console.log(place);
+        this.place = place;
+      });
+    this.show = false;
+    this.showGeoInfo = false;
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   showForm() {
     this.show = !this.show;
@@ -48,7 +49,7 @@ export class PlaceDetailComponent implements OnInit {
 
   remove(id) {
     this.placeService.remove(id).subscribe();
-    this.router.navigate(['']);
+    this.router.navigate(['/atlas']);
   }
 
   createFavorite(place) {
@@ -58,7 +59,8 @@ export class PlaceDetailComponent implements OnInit {
   createGeoInfo() {
     this.showGeoInfo = !this.showGeoInfo;
     this.mapService.indexMaps().subscribe(maps => {
-       this.maps=maps;
-     console.log(this.maps); });
+      this.maps = maps;
+      console.log(this.maps);
+    });
   }
 }

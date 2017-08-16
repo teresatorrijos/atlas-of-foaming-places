@@ -10,19 +10,21 @@
 							<span class="icon-bar black"></span>
 						</button>
         <a href="/home" class="navbar-brand black"><i class="fa fa-bullseye"></i></a>
-        <span class="main-name black">ATLAS OF LANDSCAPES</span>
+        <a href="/home"><span class="main-name black">ATLAS OF LANDSCAPES</span></a>
       </div>
       <div id="top-navbar-1" class="collapse navbar-collapse black">
-        <ul class="nav navbar-nav navbar-right black">
-          <li><a href="/atlas" class="scroll-link black">Atlas</a></li>
-          <li><a href="/cartography" class="scroll-link black">Cartography</a></li>
-          <li><a href="#how-it-works" class="scroll-link black">How it works</a></li>
-          <li><a href="/login" class="scroll-link black">Login</a></li>
-          <li><a href="/signup" class="scroll-link black">Signup</a></li>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/atlas" class="scroll-link">Atlas</a></li>
+          <li><a href="/new" class="scroll-link">Upload a photo</a></li>
+          <li><a href="#how-it-works" class="scroll-link">How it works</a></li>
+          <li><a href="#" class="scroll-link">My Profile</a></li>
+          <li><a href="/login" class="scroll-link">Login</a></li>
+          <li><a href="/signup" class="scroll-link">Signup</a></li>
         </ul>
       </div>
     </div>
   </nav>
+<!-- [routerLink]="['/user', session.user._id]" -->
 
 <!-- <h3> Atlas of landscapes </h3> -->
 

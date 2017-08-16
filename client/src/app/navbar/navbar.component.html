@@ -11,13 +11,15 @@
 							<span class="icon-bar"></span>
 						</button>
         <a href="/home" class="navbar-brand"><i class="fa fa-bullseye"></i></a>
-        <span class="main-name">ATLAS OF LANDSCAPES</span>
+      <a href="/home">  <span class="main-name">  ATLAS OF LANDSCAPES </span></a>
+
       </div>
       <div id="top-navbar-1" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/atlas" class="scroll-link">Atlas</a></li>
-          <li><a href="/cartography" class="scroll-link">Cartography</a></li>
+          <li><a href="/new" class="scroll-link">Upload a photo</a></li>
           <li><a href="#how-it-works" class="scroll-link">How it works</a></li>
+          <li><a [routerLink]="['/user', session.user._id]" class="scroll-link">My Profile</a></li>
           <li><a href="/login" class="scroll-link">Login</a></li>
           <li><a href="/signup" class="scroll-link">Signup</a></li>
         </ul>

@@ -19,7 +19,7 @@ module.exports = {
       pdescription: req.body.pdescription || '',
       locateDegree: req.body.locateDegree || '',
       localizacion: JSON.parse(req.body.localizacion) || [],
-      creatorId: req.user._id,
+      creatorId: req.user._id || '',
       tags: JSON.parse(req.body.tags) || [],
       pic_path: `/uploads/${req.file.filename}` || '',
     });

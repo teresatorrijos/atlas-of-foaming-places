@@ -74,6 +74,7 @@ export class NewPlaceComponent implements OnInit {
         form.append('tags', JSON.stringify(this.newPlace.tags));
       };
       this.uploader.uploadAll();
-    })
+    });
+    this.router.navigate(['/atlas']);
   }
 }

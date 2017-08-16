@@ -10,6 +10,7 @@
 
   export class PruebaComponent {
     name:any;
+    @Input() zoom:number;
     @Input() index:any;
     @Input() wmsURL:any;
     @Input() layerWMS:any;
@@ -21,7 +22,8 @@
       this.name = "map"+this.index;
       this.map = new L.Map(this.name, {
         center: new L.LatLng(this.coordinates[0], this.coordinates[1]),
-        zoom: 10
+        zoom: this.zoom,
+        scrollWheelZoom: false,
       });
 
       // var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',  {
