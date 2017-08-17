@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
     providers: [UserService]
   })
 export class UserProfileComponent implements OnInit {
-    user: Object;
+    user: any;
     show: boolean;
 
     constructor(

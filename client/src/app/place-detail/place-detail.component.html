@@ -32,7 +32,7 @@
     <div *ngFor="let map of maps">
       <div class="row3">
         <div class="boxy">
-          <app-prueba [coordinates]="place.localizacion" [wmsURL]="map.wmsURL" [layerWMS]="map.layer" [index]="map.index" [zoom]="map.zoom"></app-prueba>
+          <app-cartography [coordinates]="place.localizacion" [wmsURL]="map.wmsURL" [layerWMS]="map.layer" [index]="map.index" [zoom]="map.zoom"></app-cartography>
         </div>
         <div class="legend-box">
           <h3>{{ map.title }}</h3>

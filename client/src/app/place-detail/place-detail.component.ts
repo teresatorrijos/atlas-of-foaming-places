@@ -15,7 +15,7 @@ import { MapService } from '../../services/map.service';
   providers: [MapService]
 })
 export class PlaceDetailComponent implements OnInit {
-  place: Object;
+  place: any;
   show: boolean;
   showGeoInfo: boolean;
   maps: any;
