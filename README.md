@@ -1,1 +1,1 @@
-# Atlas of Foaming Places
+# Atlas of Landscapes

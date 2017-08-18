@@ -30,7 +30,7 @@
 <div class="main-header container-fluid">
   <div class="intro">
     <div *ngIf="user.user" class="container text-center">
-      <img class="img-thumbnail" src="{{user.user.imageURL}}" alt="" width="140">
+      <img class="img-thumbnail" src="{{user.user.pic_path}}" alt="" width="140">
       <h1 class="name">{{user.user.username }}</h1>
       <!-- <div class="name"> -->
         <!-- <p>{{user.user.name }}</p> -->
@@ -69,7 +69,7 @@
             <div class="item-inner">
               <figure class="figure">
             <a [routerLink]="['/places',place._id]">
-                <img class="img-portfolio img-responsive" src="{{place.imageURL}}">
+                <img class="img-portfolio img-responsive" src="{{place.pic_path}}">
                 </a>
               </figure>
               <div class="content text-left">
@@ -85,7 +85,7 @@
             <div class="item-inner">
               <figure class="figure">
                 <a [routerLink]="['/places',favorite._id]">
-                <img class="img-portfolio img-responsive" src="{{favorite.imageURL}}">
+                <img class="img-portfolio img-responsive" src="{{favorite.pic_path}}">
                 </a>
               </figure>
               <div class="content text-left">

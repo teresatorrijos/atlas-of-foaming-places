@@ -14,13 +14,13 @@ const userSchema = new Schema({
   }
 });
 
-userSchema.set('toJSON', { virtuals: true });
-userSchema.virtual('imageURL').get(function() {
-  if(this.pic_path.includes('http')){
-    return this.pic_path;
-  }
-  return `${process.env.HOST}${this.pic_path}`;
-});
+// userSchema.set('toJSON', { virtuals: true });
+// userSchema.virtual('imageURL').get(function() {
+//   if(this.pic_path.includes('http')){
+//     return this.pic_path;
+//   }
+//   return `${process.env.HOST}${this.pic_path}`;
+// });
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

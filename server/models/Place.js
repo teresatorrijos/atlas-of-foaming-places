@@ -24,13 +24,13 @@ const placeSchema = new Schema({
   }
 });
 
-placeSchema.set('toJSON', { virtuals: true });
-placeSchema.virtual('imageURL').get(function() {
-  if(this.pic_path.includes('http')){
-    return this.pic_path;
-  }
-  return `${process.env.HOST}${this.pic_path}`;
-});
+// placeSchema.set('toJSON', { virtuals: true });
+// placeSchema.virtual('imageURL').get(function() {
+//   if(this.pic_path.includes('http')){
+//     return this.pic_path;
+//   }
+//   return `${process.env.HOST}${this.pic_path}`;
+// });
 
 const Place = mongoose.model('Place', placeSchema);
 module.exports = Place;
